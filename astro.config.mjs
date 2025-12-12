@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://infbehavior-design.github.io',
+  base: '/FJU_Digital_Content_Curation',
   vite: {
     plugins: [tailwindcss()]
   },
