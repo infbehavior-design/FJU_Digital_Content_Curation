@@ -1,0 +1,136 @@
+---
+import moreinfo1 from "../assets/moreinfo-1.jpg";
+import moreinfo2 from "../assets/moreinfo-2.jpg";
+import moreinfo3 from "../assets/moreinfo-3.jpg";
+---
+
+<section class="extension-section">
+  <h2 class="title">延伸資訊</h2>
+  <p class="subtitle">從書本認識更多新莊與產業轉型</p>
+
+  <div class="cards">
+    
+    <!-- Card 1 -->
+    <div class="card">
+      <img src={moreinfo1.src} alt="新莊騷 issue08" class="cover" />
+
+      <h3 class="book-title">新莊騷 issue08<br/>新新莊人的新生活–島內移居</h3>
+      <p class="description">
+        從人口增長到城市變化、巷街區的轉型<br>
+        中正路大型工廠的記憶地圖<br>
+        新生代職人的創業理念與職涯發展
+      </p>
+
+      <a href="https://reurl.cc/1kvrVV" target="_blank" class="more-btn">了解更多</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src={moreinfo2.src} alt="新莊騷 issue01" class="cover" />
+
+      <h3 class="book-title">新莊騷 issue01<br/>咖啡覺醒力</h3>
+      <p class="description">
+        訪談港澳、15 位新莊獨具風格的咖啡師專訪<br>
+        咖啡文化與生活體驗的合而為一<br>
+        現代版格格巷下、與人交流的咖啡店
+      </p>
+
+      <a href="https://reurl.cc/eVzjKx" target="_blank" class="more-btn">了解更多</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src={moreinfo3.src} alt="創新的10個原點" class="cover" />
+
+      <h3 class="book-title">創新的10個原點<br/>拆解 2000 家企業顛覆產業規則的創新思維</h3>
+      <p class="description">
+        突破盲點、建立路徑門檻、資源重組<br>
+        112 種創新策略應用：失敗不是因為你想得太小<br>
+        解析 Google、星巴克、Apple 等創新典範
+      </p>
+
+      <a href="https://reurl.cc/MMOnQk" target="_blank" class="more-btn">了解更多</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .extension-section {
+    text-align: center;
+    padding: 5rem 2rem;
+    color: #4a3423; /* 類似簡報的咖啡色字體 */
+  }
+
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.7;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    text-align: left;
+    padding: 1rem;
+  }
+
+  .cover {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .book-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+    opacity: 0.8;
+  }
+
+  .more-btn {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border-radius: 9999px; /* 圓角按鈕 */
+    background: white;
+    border: 2px solid #333;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .more-btn:hover {
+    background: #333;
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  /* RWD：手機改單欄 */
+  @media (max-width: 900px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+    .extension-section {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

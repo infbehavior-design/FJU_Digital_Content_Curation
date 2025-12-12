@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+---
+
+<section class="motivation-container">
+  <div class="left fade-in" style="">
+    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">起心動念</h2>
+    <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
+      新莊工業發展<br>
+      與咖啡坊前身介紹
+    </h3>
+    <p class="font-light mb-4 text-base md:text-lg lg:text-xl">
+      新莊曾以熱鬧的工業聲響構築城市記憶，而產業轉型的腳步，
+      讓一間由工廠轉型而成的咖啡坊，成為連結過去與未來的新起點。
+    </p>
+
+    <button class="more-info">了解更多</button>
+  </div>
+
+  <div class="right">
+    <img src="/images/coffee.jpg" alt="咖啡坊圖片" />
+  </div>
+</section>
+
+
+<style>
+.motivation-container{
+  background-color: #e8c9a8;
+  width: 100%;
+  height: 100vh; /* Hero 全螢幕 */
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  padding: 0 6vw;
+  line-height: 10px;
+}
+
+
+/* 左半部文字 */
+.left {
+  flex: 1;
+  max-width: 60%;
+}
+
+/* 右半部圖片 */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px; /* 可加可不加 */
+}
+
+.more-info {
+  background-color: #6a4b32;   /* 深咖啡色，與背景對比 */
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 9999px;       /* 完全圓角 */
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  /* 動畫過渡效果 */
+  transition: 
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.more-info:hover {
+  background-color: #8b6346;   /* hover 時顏色亮一點 */
+  transform: translateY(-3px); /* 微微往上浮起 */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* 產生陰影 */
+}
+
+</style>

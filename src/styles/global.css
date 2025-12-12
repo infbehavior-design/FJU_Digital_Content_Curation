@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import url("https://font.emtech.cc/css/TaipeiSansTC");
+ 
+body {
+    font-family: "TaipeiSansTC", sans-serif;
+}
+

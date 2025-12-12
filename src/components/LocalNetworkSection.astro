@@ -1,0 +1,158 @@
+---
+import "../styles/global.css";
+---
+
+<section class="localnetwork-container">
+  {/* 左邊：標題＋說明文字 */}
+  <div class="localnetwork-text">
+    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl text-[#A9DED8]">
+      在地連結 | Local Network
+    </h2>
+    <h3 class="font-bold mb-4 text-1xl md:text-2xl lg:text-3xl text-[#A9DED8]">
+      新莊不只是一個工業地區，也逐漸發展成融合文化、創意與生活風格的地方。
+    </h3>
+    <h3 class="font-bold mb-4 text-1xl md:text-2xl lg:text-3xl text-[#A9DED8]">
+      培樂儂咖啡作為地方轉型的一部分，串連起產業、社群與居民生活，成為在地文化的重要節點。
+    </h3>
+  </div>
+
+  {/* 右邊：資訊卡片 */}
+  <div class="moreinfo">
+    <p class="moreinfo-title">
+      透過以下平台，可以更深入了解新莊的地方創生與文化發展：
+    </p>
+    <ul class="moreinfo-list">
+      <li>
+        <span class="moreinfo-tag">01</span>
+        <div class="moreinfo-item-text">
+          <a href="https://www.benefarm.com.tw/home" target="_blank" style="text-decoration: underline;" class="moreinfo-item-title">Benefarm 培樂儂</a>
+          <p class="moreinfo-item-desc" >
+            從電子零件廠到咖啡坊的轉型故事，認識一間在地咖啡品牌如何與社區共好。
+          </p>
+        </div>
+      </li>
+      <li>
+        <span class="moreinfo-tag">02</span>
+        <div class="moreinfo-item-text">
+          <a href="https://www.twrr.ndc.gov.tw/" target="_blank" style="text-decoration: underline;" class="moreinfo-item-title">地方創生資訊共享交流平臺</a>
+          <p class="moreinfo-item-desc">
+            集結各地地方創生案例與資源的交流節點，讓更多行動者彼此看見。
+          </p>
+        </div>
+      </li>
+      <li>
+        <span class="moreinfo-tag">03</span>
+        <div class="moreinfo-item-text">
+          <a href="https://www.xinzhuang.ntpc.gov.tw/home.jsp?id=dec5a2b78aef6c85&act=be4f48068b2b0031&dataserno=02d13caeb5fd13a2f43a5a85d9cc4520" target="_blank" style="text-decoration: underline;" class="moreinfo-item-title">新北市政府 113 年度地方創生培力坊・新莊場</a>
+          <p class="moreinfo-item-desc">  
+            以工作坊形式帶入專家與社群，陪伴地方夥伴思考新莊未來的可能。
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+.localnetwork-container {
+  background-color: #33485E;
+  width: 100%;
+  min-height: 100vh; /* 滿版高度，但內容不足時也不會被撐太空 */
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  padding: 0 6vw;
+  gap: 3rem;
+}
+
+/* 左邊文字區：讓行距正常一點、不要像原本 line-height:10px 那麼擠 */
+.localnetwork-text h2,
+.localnetwork-text h3,
+.localnetwork-text p {
+  line-height: 1.6;
+}
+
+/* 右邊資訊卡片 */
+.moreinfo {
+  background-color: #F7F2EA;
+  border-radius: 1.5rem;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+  max-width: 720px;
+}
+
+.moreinfo-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #3A3A3A;
+}
+
+/* 列表樣式 */
+.moreinfo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.moreinfo-list li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.moreinfo-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background-color: #33485E;
+  color: #EAF7F4;
+  flex-shrink: 0;
+}
+
+.moreinfo-item-text {
+  flex: 1;
+}
+
+.moreinfo-item-title {
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: #333333;
+}
+
+.moreinfo-item-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+
+
+/* RWD：平板以下改成上下堆疊、文字改置中 */
+@media (max-width: 768px) {
+  .localnetwork-container {
+    grid-template-columns: 1fr;
+    padding: 3rem 8vw;
+    text-align: center;
+  }
+
+  .localnetwork-text {
+    order: 1;
+  }
+
+  .moreinfo {
+    order: 2;
+    margin: 0 auto;
+    text-align: left; /* 卡片內文字保持左對齊，較好閱讀 */
+  }
+}
+</style>
