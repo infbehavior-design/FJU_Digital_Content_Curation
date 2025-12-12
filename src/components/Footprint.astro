@@ -1,0 +1,231 @@
+---
+/**
+ * Tailwind + scroll-snap 版本課程足跡輪播
+ * 想改卡片內容 → 調整下面 cards 陣列。
+ */
+
+const cards = [
+  {
+    title: "奠定基礎",
+    date: "114.09 ~ 114.09",
+    imageLabel: "Image",
+    link: "#",
+  },
+  {
+    title: "教育訓練",
+    date: "114.09 ~ 114.09",
+    imageLabel: "Image",
+    link: "#",
+  },
+  {
+    title: "實地參訪",
+    date: "114.09 ~ 114.10",
+    imageLabel: "Image",
+    link: "#",
+  },
+  {
+    title: "事前準備",
+    date: "114.10 ~ 114.11",
+    imageLabel: "Image",
+    link: "#",
+  },
+  {
+    title: "採訪作業",
+    date: "114.11.12",
+    imageLabel: "Image",
+    link: "#",
+  },
+  {
+    title: "成果發表",
+    date: "114.11 ~ 114.12",
+    imageLabel: "Image",
+    link: "#",
+  },
+];
+---
+
+<section class="min-h-screen flex items-center justify-center bg-[#b3734f]">
+  <div class="w-full max-w-5xl mx-auto text-center px-4">
+    <!-- 標題 -->
+    <h2 class="text-[clamp(28px,3vw,40px)] tracking-[0.12em] text-[#fff8f0] mb-10">
+      課程足跡
+    </h2>
+
+    <div class="flex items-center gap-6">
+      <!-- 左箭頭 -->
+      <button
+        id="timeline-prev"
+        class="w-14 h-14 rounded-full border-2 border-[#f6e2c9] text-[#f6e2c9] flex items-center justify-center shrink-0 transition
+               hover:bg-[#f6e2c9] hover:text-[#424729]
+               disabled:opacity-30 disabled:cursor-default disabled:hover:bg-transparent disabled:hover:text-[#f6e2c9]"
+        aria-label="上一張">
+        ←
+      </button>
+
+      <!-- 捲動容器：snap-x + snap-mandatory -->
+      <div
+        id="timeline-scroll"
+        class="relative flex-1 overflow-x-auto scroll-smooth snap-x snap-mandatory flex gap-6
+               px-[10vw] md:px-[12vw] py-4">
+        {cards.map((card, idx) => (
+          <article
+            data-index={idx}
+            class="timeline-snap-card shrink-0 snap-center w-[260px] md:w-[320px]">
+            <div
+              class="timeline-snap-inner flex flex-col items-center justify-start
+                     rounded-[32px] bg-[#424729] text-[#fff8f0]
+                     shadow-[0_10px_30px_rgba(0,0,0,0.25)]
+                     px-6 pt-8 pb-10 transition-transform duration-300">
+                        
+              <div class="text-2xl mb-2">🍃</div>
+
+              <h3 class="text-2xl md:text-3xl tracking-[0.08em] mb-2 text-[#fff8f0]">
+                {card.title}
+              </h3>
+
+              <div class="text-sm md:text-base mb-6">{card.date}</div>
+
+              <div
+                class="w-full aspect-[4/3] rounded-3xl bg-[#e6c59b]
+                       flex items-center justify-center
+                       text-xl font-semibold text-[#5b4026] mb-6">
+                {card.imageLabel}
+              </div>
+
+              <button
+                type="button"
+                class="mt-auto px-7 py-2 rounded-full border border-[#f6e2c9] text-[#f6e2c9] tracking-[0.12em] text-sm md:text-base transition hover:bg-[#f6e2c9] hover:text-[#424729]"
+                data-link={card.link}
+                >
+                了解更多
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- 右箭頭 -->
+      <button
+        id="timeline-next"
+        class="w-14 h-14 rounded-full border-2 border-[#f6e2c9] text-[#f6e2c9] flex items-center justify-center shrink-0 transition
+               hover:bg-[#f6e2c9] hover:text-[#424729]
+               disabled:opacity-30 disabled:cursor-default disabled:hover:bg-transparent disabled:hover:text-[#f6e2c9]"
+        aria-label="下一張">
+        →
+      </button>
+    </div>
+
+    <!-- 下方裝飾 -->
+    <div class="mt-8 text-xs tracking-[0.4em] text-[#fff8f0]/80 select-none">
+      · · · · · · · · · · · ·
+    </div>
+  </div>
+</section>
+
+
+<!-- 補一點全域 CSS：放大效果 + 捲軸隱藏 -->
+<style is:global>
+  /* 中間那張 active 卡片放大 */
+  .timeline-snap-card.is-active .timeline-snap-inner {
+    transform: scale(1.06);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+  }
+
+  /* 隱藏橫向捲軸（保留捲動功能） */
+  #timeline-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  #timeline-scroll {
+    scrollbar-width: none;
+  }
+</style>
+
+<script is:inline>
+  const container = document.getElementById("timeline-scroll");
+  const prevBtn = document.getElementById("timeline-prev");
+  const nextBtn = document.getElementById("timeline-next");
+
+  if (container && prevBtn && nextBtn) {
+    const cards = Array.from(
+      container.querySelectorAll(".timeline-snap-card"),
+    );
+    let activeIndex = 0;
+
+    function clampIndex(i) {
+      return Math.max(0, Math.min(cards.length - 1, i));
+    }
+
+    function updateButtons() {
+      prevBtn.disabled = activeIndex === 0;
+      nextBtn.disabled = activeIndex === cards.length - 1;
+    }
+
+    function updateActiveClass() {
+      cards.forEach((card, idx) => {
+        card.classList.toggle("is-active", idx === activeIndex);
+      });
+    }
+
+    function scrollToIndex(newIndex, withScroll = true) {
+      activeIndex = clampIndex(newIndex);
+      const target = cards[activeIndex];
+      updateActiveClass();
+      updateButtons();
+
+      if (withScroll && target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
+    }
+
+    prevBtn.addEventListener("click", () => {
+      scrollToIndex(activeIndex - 1);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      scrollToIndex(activeIndex + 1);
+    });
+
+    // 使用者自行滑動時，自動更新哪一張是 active
+    let rAF = null;
+    container.addEventListener("scroll", () => {
+      if (rAF !== null) cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        const containerRect = container.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
+
+        let closestIndex = activeIndex;
+        let closestDist = Infinity;
+
+        cards.forEach((card, idx) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const dist = Math.abs(cardCenter - containerCenter);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closestIndex = idx;
+          }
+        });
+
+        if (closestIndex !== activeIndex) {
+          // 更新 active 但不要再觸發 scrollIntoView，避免互相干擾
+          scrollToIndex(closestIndex, false);
+        }
+      });
+    });
+
+    // 初始化：捲到第一張，讓 snap-center 幫我們置中
+    scrollToIndex(0);
+  }
+
+  document.querySelectorAll("[data-link]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const url = btn.getAttribute("data-link");
+    if (url && url !== "#") window.location.href = url;
+  });
+});
+
+</script>
