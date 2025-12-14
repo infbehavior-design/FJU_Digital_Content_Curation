@@ -44,8 +44,9 @@ const cards = [
 ];
 ---
 
-<section class="min-h-screen flex items-center justify-center bg-[#b3734f]">
-  <div class="w-full max-w-5xl mx-auto text-center px-4">
+<section id="footprint" class="min-h-screen flex items-center justify-center bg-[#b3734f]">
+  <!-- 寬度 = 90vw，但最大不超過 1280px -->
+  <div class="w-[90vw] max-w-[1280px] mx-auto text-center px-4 lg:px-8">
     <!-- 標題 -->
     <h2 class="text-[clamp(28px,3vw,40px)] tracking-[0.12em] text-[#fff8f0] mb-10">
       課程足跡
@@ -66,7 +67,10 @@ const cards = [
       <div
         id="timeline-scroll"
         class="relative flex-1 overflow-x-auto scroll-smooth snap-x snap-mandatory flex gap-6
-               px-[10vw] md:px-[12vw] py-4">
+        px-4 sm:px-8 lg:px-10 py-4">
+        <!-- 左邊留白用的「隱形卡」 -->
+        <div class="shrink-0 w-[10vw] sm:w-[12vw] lg:w-[14vw] snap-none"></div>
+
         {cards.map((card, idx) => (
           <article
             data-index={idx}
@@ -76,7 +80,7 @@ const cards = [
                      rounded-[32px] bg-[#424729] text-[#fff8f0]
                      shadow-[0_10px_30px_rgba(0,0,0,0.25)]
                      px-6 pt-8 pb-10 transition-transform duration-300">
-                        
+
               <div class="text-2xl mb-2">🍃</div>
 
               <h3 class="text-2xl md:text-3xl tracking-[0.08em] mb-2 text-[#fff8f0]">
@@ -102,6 +106,8 @@ const cards = [
             </div>
           </article>
         ))}
+        <!-- 右邊留白用的「隱形卡」 -->
+        <div class="shrink-0 w-[10vw] sm:w-[12vw] lg:w-[14vw] snap-none"></div>
       </div>
 
       <!-- 右箭頭 -->
@@ -156,9 +162,11 @@ const cards = [
     }
 
     function updateButtons() {
-      prevBtn.disabled = activeIndex === 0;
-      nextBtn.disabled = activeIndex === cards.length - 1;
+      // 循環模式 → 按鈕永遠可用
+      prevBtn.disabled = false;
+      nextBtn.disabled = false;
     }
+
 
     function updateActiveClass() {
       cards.forEach((card, idx) => {
@@ -182,11 +190,19 @@ const cards = [
     }
 
     prevBtn.addEventListener("click", () => {
-      scrollToIndex(activeIndex - 1);
+      if (activeIndex === 0) {
+        scrollToIndex(cards.length - 1); // 跳到最後一張
+      } else {
+        scrollToIndex(activeIndex - 1);
+      }
     });
 
     nextBtn.addEventListener("click", () => {
-      scrollToIndex(activeIndex + 1);
+      if (activeIndex === cards.length - 1) {
+        scrollToIndex(0); // 回到第一張
+      } else {
+        scrollToIndex(activeIndex + 1);
+      }
     });
 
     // 使用者自行滑動時，自動更新哪一張是 active

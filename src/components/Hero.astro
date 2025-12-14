@@ -1,60 +1,186 @@
 ---
-
+import coffeebean from "../assets/coffee-beans.png";
 ---
 
 <section class="hero-container">
   <div class="hero-text">
-    <h1>從電子工廠到咖啡坊</h1>
-    <p>聚焦新莊在地產業轉型</p>
+    <h1 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl text-[#DEC2A9]">從電子工廠到咖啡坊</h1>
+    <p class="font-normal mb-4 text-2xl md:text-3xl lg:text-4xl text-[#DEC2A9]">——聚焦新莊在地產業轉型</p>
+
+    <div class="font-light mb-4 text-2xl md:text-3xl lg:text-4xl text-[#DEC2A9]">
+			<span>以 Benefram 培樂儂咖啡坊</span>
+
+		<div class="inline-flex items-center justify-center">
+			<img
+					id="coffee-bean-img"
+					src={coffeebean.src}
+					alt="咖啡豆"
+					class="h-2 md:h-6 lg:h-10 w-auto cursor-pointer transition-transform duration-700 ease-in-out"
+					style="transform-origin: center;"
+					/>
+		</div>
+			<span class="font-light mb-4 text-2xl md:text-3xl lg:text-4xl text-[#DEC2A9]">為實例</span>
+		</div>
   </div>
 
+
+
+
   <div class="hero-image-wrapper">
-    <img 
-      src="/images/hero-example.jpg" 
-      alt="hero image"
-      class="hero-image"
+    <!-- 電子工廠：一開始先完全顯示 -->
+    <img
+      src="src/assets/Hero-before.jpg"
+      alt="電子工廠的景象"
+      class="hero-image hero-image--before"
+    />
+
+    <!-- 咖啡坊：一開始被 clip-path 藏起來，之後用刮除方式蓋上來 -->
+    <img
+      src="src/assets/Hero-after.jpg"
+      alt="咖啡坊的景象"
+      class="hero-image hero-image--after"
     />
   </div>
 </section>
 
 <style>
 .hero-container {
-    background-color: #5E4833;
-    width: 100%;
-    height: 100vh; /* Hero 全螢幕 */
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: center;
-    padding: 0 6vw;
+  background-color: #5e4833;
+  width: 100%;
+  height: 100vh; /* Hero 全螢幕 */
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  padding: 0 0 0 4vw;
 }
 
-.hero-text {
-    color: white;
-    z-index: 2;
-}
 
-.hero-text h1 {
-    font-size: 3.6rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.3;
-}
-
-.hero-text p {
-    font-size: 1.4rem;
-    opacity: 0.9;
-}
-
+/* 右半邊圖片區塊：滿版 + 刮除動畫用 */
 .hero-image-wrapper {
-    display: flex;
-    justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;      /* 右側視覺高度，可以依喜好調整，例如 80vh */
+  /* max-height: 1024px; 防止超高螢幕時太拉長，可視情況增減 */
+  overflow: hidden;
 }
 
+/* 兩張圖都絕對定位在同一個位置 */
 .hero-image {
-    width: 90%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 4px;
+  position: absolute;
+  inset: 0;           /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
+/* 電子工廠：一開始全露出 */
+.hero-image--before {
+  z-index: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* 咖啡坊：一開始被「從右側整個剪掉」，所以看不到 */
+.hero-image--after {
+  z-index: 2;
+  clip-path: inset(0 100% 0 0); /* 上 右 下 左 */
+}
+
+/* 刮除動畫：從左到右打開（右邊的剪裁從 100% → 0%） */
+@keyframes heroWipeFromLeft {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* 被切換進場的那一張圖會套這個 class */
+.hero-image--wipe-in {
+  animation: heroWipeFromLeft 1.2s ease-in-out forwards;
+}
 </style>
+
+<script>
+  // 顯示時間（靜止不動）與切換動畫時間（刮除）
+  const DISPLAY_TIME = 3000;      // 2 秒停留
+  const TRANSITION_TIME = 1200;   // 1.2 秒刮除動畫
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      const beforeImg = document.querySelector(".hero-image--before");
+      const afterImg = document.querySelector(".hero-image--after");
+
+      if (!beforeImg || !afterImg) return;
+
+      let showing = "before"; // 目前完整顯示的是哪一張
+
+      function bringToFront(img) {
+        if (img === beforeImg) {
+          beforeImg.style.zIndex = "2";
+          afterImg.style.zIndex = "1";
+        } else {
+          afterImg.style.zIndex = "2";
+          beforeImg.style.zIndex = "1";
+        }
+      }
+
+      function wipeIn(targetImg) {
+        // 先把 clip-path 重設回「完全被剪掉」的狀態
+        targetImg.classList.remove("hero-image--wipe-in");
+        targetImg.style.clipPath = "inset(0 100% 0 0)";
+
+        // 把要進場的圖放到最上層
+        bringToFront(targetImg);
+
+        // 強制 reflow，確保動畫會重新觸發
+        void targetImg.offsetWidth;
+
+        // 套上動畫 class，開始由左到右刮進來
+        targetImg.classList.add("hero-image--wipe-in");
+      }
+
+      function loop() {
+        const currentImg = showing === "before" ? beforeImg : afterImg;
+        const nextImg = showing === "before" ? afterImg : beforeImg;
+
+        // 先停留 DISPLAY_TIME，再切換
+        setTimeout(() => {
+          wipeIn(nextImg);
+
+          // 等刮除動畫跑完，再更新狀態，進入下一輪
+          setTimeout(() => {
+            showing = showing === "before" ? "after" : "before";
+            loop();
+          }, TRANSITION_TIME + 50);
+        }, DISPLAY_TIME);
+      }
+
+      // 一進頁面就從「電子工廠」開始，兩秒後第一次切到咖啡坊
+      loop();
+    });
+  }
+
+  const img = document.getElementById("coffee-bean-img");
+	let angle = 0;
+	img?.addEventListener("click", () => {
+		angle += 360;
+		if (img) img.style.transform = `rotate(${angle}deg)`;
+	});
+
+	const stoneImg = document.getElementById('coffee-bean-img');
+	let isRotating = false;
+	let currentRotation = 0;
+
+	stoneImg?.addEventListener('click', () => {
+		if (isRotating) return;
+
+		isRotating = true;
+		currentRotation += 360;
+		stoneImg.style.transform = `rotate(${currentRotation}deg)`;
+
+		setTimeout(() => {
+			isRotating = false;
+		}, 700);
+	});
+</script>
