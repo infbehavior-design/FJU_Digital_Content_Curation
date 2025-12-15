@@ -2,20 +2,20 @@
 import "../styles/global.css";
 ---
 
-<section id="local" class="local-container">
-  <div class="left  fade-in">
-    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">
-        地方創生<br>
-        永續發展
-    </h2>
+<section id="motivation" class="motivation-container">
+  <div class="left fade-in">
+    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">人物故事</h2>
     <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
-      選豆策略、有機認證及友善環境
+      －來自兩位咖啡師的自述
     </h3>
     <p class="font-light mb-4 text-base md:text-lg lg:text-xl">
-      「經營土地，就是與大自然分享土地。」在開墾時保留原生樹種，回補從土地拿走的養分，考量生態平衡，才能讓咖啡有永續發展的機會
+      來自於第一手的採訪，經過二次整理，帶大家看到兩位咖啡師的故事，包括對咖啡的堅持，本人的個性亮點等。
     </p>
 
-    <button class="more-info">了解更多</button>
+    <a href="/motivation-article" class="more-info">
+      了解更多
+    </a>
+
   </div>
 
   <!-- 右側兩張錯位照片 -->
@@ -23,22 +23,22 @@ import "../styles/global.css";
     <div class="photo-row">
       <!-- 左邊那張 -->
       <img
-        src="src/assets/Local1.jpg"
-        alt="咖啡坊樓梯一角的綠植"
+        src="src/assets/LifeStory1.jpg"
+        alt="從電子零件廠留存至今的標語牌"
         class="photo photo-left"
       />
       <!-- 右邊那張 -->
       <img
-        src="src/assets/Local2.jpg"
-        alt="咖啡坊的菜單"
+        src="src/assets/LifeStory2.jpg"
+        alt="從電子零件廠留存至今的標語牌"
         class="photo photo-right"
       />
     </div>
+  </div>
 </section>
 
-
 <style>
-.local-container {
+.motivation-container {
   background-color: #e8c9a8;
   width: 100%;
   height: 100vh; /* Hero 全螢幕 */
@@ -71,7 +71,7 @@ import "../styles/global.css";
 
 /* 共同樣式 + 漂浮動畫 */
 .photo {
-  width: 60%;
+  width: 400px;
   height: 80vh;
   object-fit: cover;
   border-radius: 22px;
@@ -184,6 +184,3 @@ import "../styles/global.css";
   }
 }
 </style>
-
-
- 

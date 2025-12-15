@@ -15,69 +15,172 @@ import "../styles/global.css";
     <button class="more-info">了解更多</button>
   </div>
 
-  <div class="right">
-    <img src="/images/coffee.jpg" alt="咖啡坊圖片" />
+  <!-- 右側兩張錯位照片 -->
+  <div class="right fade-in">
+    <div class="photo-row">
+      <!-- 左邊那張 -->
+      <img
+        src="src/assets/Entrepreneurial-1.jpg"
+        alt="工廠照片"
+        class="photo photo-left"
+      />
+      <!-- 右邊那張 -->
+      <img
+        src="src/assets/Entrepreneurial-2.jpg"
+        alt="咖啡坊前身空間"
+        class="photo photo-right"
+      />
+    </div>
   </div>
 </section>
 
 
+</section>
+
+
 <style>
-.entrepreneurial-container{
+.entrepreneurial-container {
   background-color: #e8c9a8;
   width: 100%;
   height: 100vh; /* Hero 全螢幕 */
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 0 6vw;
-  line-height: 10px;
 }
-
 
 /* 左半部文字 */
 .left {
-  flex: 1;
   max-width: 60%;
 }
 
-/* 右半部圖片 */
+
+/* 右側容器 */
 .right {
-  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.right img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
+/* 新的左右排列容器 */
+.photo-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+/* 共同樣式 + 漂浮動畫 */
+.photo {
+  width: 500px;
+  height: 80vh;
   object-fit: cover;
-  border-radius: 6px; /* 可加可不加 */
+  border-radius: 22px;
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.15);
+
+  /* 基準位移（之後由 .photo-left / .photo-right 設定） */
+  --offset-y: 0px;
+  transform: translateY(var(--offset-y));
+
+  /* 漂浮動畫 */
+  animation: float 3s ease-in-out infinite alternate;
 }
 
+/* 左邊那張：基準往下 20px，再上下小幅漂浮 */
+.photo-left {
+  --offset-y: 35px;
+}
+
+/* 右邊那張：基準往上 20px，再上下小幅漂浮 */
+.photo-right {
+  --offset-y: -35px;
+}
+
+/* 漂浮動畫：以 offset 為中心，上下輕微晃動 */
+@keyframes float {
+  0% {
+    transform: translateY(var(--offset-y));
+  }
+  100% {
+    transform: translateY(calc(var(--offset-y) - 12px));
+  }
+}
+
+
+/* 手機版改成上下排列 */
+@media (max-width: 768px) {
+  .photo-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .photo {
+    width: 100%;
+    height: 300px;
+    border-radius: 18px;
+    transform: none !important; /* 手機版不要錯位 */
+  }
+}
+
+
+/* 按鈕樣式維持原本設定 */
 .more-info {
-  background-color: #6a4b32;   /* 深咖啡色，與背景對比 */
+  background-color: #6a4b32;
   color: white;
   padding: 12px 28px;
   border: none;
-  border-radius: 9999px;       /* 完全圓角 */
+  border-radius: 9999px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-
-  /* 動畫過渡效果 */
-  transition: 
+  transition:
     background-color 0.3s ease,
     transform 0.2s ease,
     box-shadow 0.3s ease;
 }
 
 .more-info:hover {
-  background-color: #8b6346;   /* hover 時顏色亮一點 */
-  transform: translateY(-3px); /* 微微往上浮起 */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* 產生陰影 */
+  background-color: #8b6346;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-</style>
+/* RWD：小螢幕改成上下排，照片不要重疊避免太擠 */
+@media (max-width: 768px) {
+  .motivation-container {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    height: auto;
+    padding: 48px 6vw 64px;
+    row-gap: 32px;
+  }
 
- 
+  .left {
+    max-width: 100%;
+  }
+
+  .photo-stack {
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .photo {
+    position: relative;
+    width: 100%;
+    height: 48%;
+    border-radius: 200px 200px 100px 100px;
+  }
+
+  .photo-left {
+    top: 0;
+    left: 0;
+    margin-bottom: 16px;
+  }
+
+  .photo-right {
+    top: 0;
+    right: 0;
+    height: 48%;
+  }
+}
+</style>

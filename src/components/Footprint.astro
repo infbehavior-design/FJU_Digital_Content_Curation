@@ -1,7 +1,7 @@
 ---
 /**
- * Tailwind + scroll-snap 版本課程足跡輪播
- * 想改卡片內容 → 調整下面 cards 陣列。
+ * 課程足跡 + Popup 視窗版本
+ * cards 裡多加了 description & images，拿來填 popup 的內容。
  */
 
 const cards = [
@@ -9,37 +9,69 @@ const cards = [
     title: "奠定基礎",
     date: "114.09 ~ 114.09",
     imageLabel: "Image",
-    link: "#",
+    description:
+      "在課程一開始，帶領同學認識新莊產業轉型的背景，並說明本學期的專題方向與分組規劃，協助大家建立共同的敘事骨架與研究目標。",
+    // TODO：把下面路徑換成你自己的圖片
+    images: [
+      "/images/footprint/basis-1.jpg",
+      "/images/footprint/basis-2.jpg",
+    ],
   },
   {
     title: "教育訓練",
     date: "114.09 ~ 114.09",
     imageLabel: "Image",
-    link: "#",
+    description:
+      "透過課堂講授與案例分析，建立學生對數位敘事與資訊使用者行為的基本概念，並練習拆解真實案例。",
+    images: [
+      "/images/footprint/training-1.jpg",
+      "/images/footprint/training-2.jpg",
+    ],
   },
   {
     title: "實地參訪",
     date: "114.09 ~ 114.10",
     imageLabel: "Image",
-    link: "#",
+    description:
+      "帶學生實際走訪 Benefarm 培樂儂與周邊街區，觀察空間、與店主交流，累積後續故事創作所需的一手素材。",
+    images: [
+      "/images/footprint/visit-1.jpg",
+      "/images/footprint/visit-2.jpg",
+    ],
   },
   {
     title: "事前準備",
     date: "114.10 ~ 114.11",
     imageLabel: "Image",
-    link: "#",
+    description:
+      "各組整理田野資料、撰寫腳本與分鏡，思考如何把複雜的訪談內容轉換成清楚、有層次的故事線。",
+    images: [
+      "/images/footprint/prepare-1.jpg",
+      "/images/footprint/prepare-2.jpg",
+    ],
   },
   {
     title: "採訪作業",
     date: "114.11.12",
     imageLabel: "Image",
-    link: "#",
+    description:
+      "安排與咖啡坊創辦人及相關角色的深度訪談，記錄他們對產業轉型、生活選擇與在地連結的看法。",
+    images: [
+      "/images/footprint/interview-1.jpg",
+      "/images/footprint/interview-2.jpg",
+    ],
   },
   {
     title: "成果發表",
     date: "114.11 ~ 114.12",
     imageLabel: "Image",
-    link: "#",
+    description:
+      "各組將影像、聲音與文字整合成最終作品，在公開發表中與同學、師長與在地夥伴分享成果與回饋。",
+    images: [
+      "/images/footprint/showcase-1.jpg",
+      "/images/footprint/showcase-2.jpg",
+      "/images/footprint/showcase-3.jpg",
+    ],
   },
 ];
 ---
@@ -57,8 +89,7 @@ const cards = [
       <button
         id="timeline-prev"
         class="w-14 h-14 rounded-full border-2 border-[#f6e2c9] text-[#f6e2c9] flex items-center justify-center shrink-0 transition
-               hover:bg-[#f6e2c9] hover:text-[#424729]
-               disabled:opacity-30 disabled:cursor-default disabled:hover:bg-transparent disabled:hover:text-[#f6e2c9]"
+               hover:bg-[#f6e2c9] hover:text-[#424729]"
         aria-label="上一張">
         ←
       </button>
@@ -98,9 +129,13 @@ const cards = [
 
               <button
                 type="button"
-                class="mt-auto px-7 py-2 rounded-full border border-[#f6e2c9] text-[#f6e2c9] tracking-[0.12em] text-sm md:text-base transition hover:bg-[#f6e2c9] hover:text-[#424729]"
-                data-link={card.link}
-                >
+                class="timeline-more-btn mt-auto px-7 py-2 rounded-full border border-[#f6e2c9] text-[#f6e2c9] tracking-[0.12em] text-sm md:text-base transition hover:bg-[#f6e2c9] hover:text-[#424729]"
+                data-index={idx}
+                data-title={card.title}
+                data-date={card.date}
+                data-desc={card.description}
+                data-images={card.images.join("|")}
+              >
                 了解更多
               </button>
             </div>
@@ -114,8 +149,7 @@ const cards = [
       <button
         id="timeline-next"
         class="w-14 h-14 rounded-full border-2 border-[#f6e2c9] text-[#f6e2c9] flex items-center justify-center shrink-0 transition
-               hover:bg-[#f6e2c9] hover:text-[#424729]
-               disabled:opacity-30 disabled:cursor-default disabled:hover:bg-transparent disabled:hover:text-[#f6e2c9]"
+               hover:bg-[#f6e2c9] hover:text-[#424729]"
         aria-label="下一張">
         →
       </button>
@@ -127,6 +161,88 @@ const cards = [
     </div>
   </div>
 </section>
+
+<!-- Popup 視窗 -->
+<div
+  id="footprint-modal"
+  class="fixed inset-0 z-[999] hidden bg-black/60 px-4 items-center justify-center"
+>
+  <div
+    id="footprint-modal-card"
+    class="modal-card relative w-full max-w-5xl bg-[#fdf5ee] rounded-[32px] shadow-2xl overflow-hidden flex flex-col md:flex-row gap-0"
+  >
+    <!-- 關閉按鈕 -->
+    <button
+      id="footprint-modal-close"
+      type="button"
+      class="absolute right-4 top-4 w-9 h-9 rounded-full bg-black/80 text-white flex items-center justify-center text-xl leading-none hover:bg-black"
+      aria-label="關閉視窗"
+    >
+      ×
+    </button>
+
+    <!-- 左側：照片輪播區 -->
+    <div class="md:w-[45%] bg-[#e6dacf] flex items-center justify-center p-5">
+      <div class="relative w-full aspect-[4/5] max-h-[480px] rounded-3xl overflow-hidden bg-black/10">
+        <img
+          id="footprint-modal-image"
+          src=""
+          alt=""
+          class="w-full h-full object-cover"
+        />
+
+        <!-- 左右切換按鈕 -->
+        <button
+          id="footprint-modal-image-prev"
+          type="button"
+          class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/55 text-white flex items-center justify-center text-lg hover:bg-black disabled:opacity-30 disabled:hover:bg-black/55"
+          aria-label="上一張照片"
+        >
+          ←
+        </button>
+        <button
+          id="footprint-modal-image-next"
+          type="button"
+          class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/55 text-white flex items-center justify-center text-lg hover:bg-black disabled:opacity-30 disabled:hover:bg-black/55"
+          aria-label="下一張照片"
+        >
+          →
+        </button>
+
+        <div
+          id="footprint-modal-image-counter"
+          class="absolute bottom-3 right-4 text-xs px-2 py-1 rounded-full bg-black/60 text-white"
+        >
+          0 / 0
+        </div>
+      </div>
+    </div>
+
+    <!-- 右側：文字敘述（Tag 已拿掉） -->
+    <div class="md:w-[55%] p-6 md:p-9 text-left max-h-[80vh] overflow-y-auto">
+      <h3
+        id="footprint-modal-title"
+        class="text-[clamp(22px,2.5vw,30px)] font-semibold tracking-[0.06em] mb-2 text-[#262626]"
+      >
+        標題
+      </h3>
+
+      <p
+        id="footprint-modal-period"
+        class="text-sm font-mono tracking-[0.2em] text-[#555] mb-5"
+      >
+        114.09 ~ 114.09
+      </p>
+
+      <p
+        id="footprint-modal-desc"
+        class="text-sm md:text-base leading-relaxed text-[#333] whitespace-pre-line"
+      >
+        敘述文字
+      </p>
+    </div>
+  </div>
+</div>
 
 
 <!-- 補一點全域 CSS：放大效果 + 捲軸隱藏 -->
@@ -144,7 +260,45 @@ const cards = [
   #timeline-scroll {
     scrollbar-width: none;
   }
+
+  /* ===== Popup 卡片浮出動畫 ===== */
+  .modal-card {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  @keyframes modal-pop {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .modal-pop-enter {
+    animation: modal-pop 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  /* ===== Popup 關閉淡出動畫 ===== */
+  @keyframes modal-pop-exit {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(12px) scale(0.97);
+    }
+  }
+
+  .modal-pop-exit {
+    animation: modal-pop-exit 0.25s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
 </style>
+
 
 <script is:inline>
   const container = document.getElementById("timeline-scroll");
@@ -166,7 +320,6 @@ const cards = [
       prevBtn.disabled = false;
       nextBtn.disabled = false;
     }
-
 
     function updateActiveClass() {
       cards.forEach((card, idx) => {
@@ -233,15 +386,141 @@ const cards = [
       });
     });
 
-    // 初始化：捲到第一張，讓 snap-center 幫我們置中
+    // 初始化
     scrollToIndex(0);
   }
 
-  document.querySelectorAll("[data-link]").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const url = btn.getAttribute("data-link");
-    if (url && url !== "#") window.location.href = url;
-  });
-});
+  // ===== Popup 視窗邏輯 =====
+  const modal = document.getElementById("footprint-modal");
+  const modalCard = document.getElementById("footprint-modal-card");
+  const modalCloseBtn = document.getElementById("footprint-modal-close");
+  const modalTitle = document.getElementById("footprint-modal-title");
+  const modalPeriod = document.getElementById("footprint-modal-period");
+  const modalDesc = document.getElementById("footprint-modal-desc");
+  const modalImage = document.getElementById("footprint-modal-image");
+  const modalCounter = document.getElementById("footprint-modal-image-counter");
+  const modalPrev = document.getElementById("footprint-modal-image-prev");
+  const modalNext = document.getElementById("footprint-modal-image-next");
 
+  let modalImages = [];
+  let modalImageIndex = 0;
+
+  function updateModalImage() {
+    if (!modalImages.length) {
+      modalImage.src = "";
+      modalImage.alt = "";
+      modalCounter.textContent = "";
+      modalPrev.disabled = true;
+      modalNext.disabled = true;
+      return;
+    }
+
+    modalImageIndex =
+      ((modalImageIndex % modalImages.length) + modalImages.length) %
+      modalImages.length;
+
+    modalImage.src = modalImages[modalImageIndex];
+    modalImage.alt =
+      (modalTitle.textContent || "課程照片") +
+      " 圖片 " +
+      (modalImageIndex + 1);
+    modalCounter.textContent =
+      modalImages.length > 1
+        ? `${modalImageIndex + 1} / ${modalImages.length}`
+        : "1 / 1";
+
+    const disabled = modalImages.length <= 1;
+    modalPrev.disabled = disabled;
+    modalNext.disabled = disabled;
+  }
+
+  // ⭐ 每次開啟 popup 時跑一次浮出動畫
+  function runModalAnimation() {
+    if (!modalCard) return;
+    modalCard.classList.remove("modal-pop-enter");
+    // 強制重算一次 layout，讓動畫可以重新觸發
+    void modalCard.offsetWidth;
+    modalCard.classList.add("modal-pop-enter");
+  }
+
+  function openModal() {
+    if (!modal) return;
+
+    // 先顯示
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.classList.add("overflow-hidden");
+
+    // 移除退出動畫，重新加入進場動畫
+    modalCard.classList.remove("modal-pop-exit");
+    void modalCard.offsetWidth; // 重新計算 layout，讓動畫可以再次觸發
+    modalCard.classList.add("modal-pop-enter");
+  }
+
+  function closeModal() {
+    if (!modal) return;
+
+    // 關閉前先播放淡出動畫
+    modalCard.classList.remove("modal-pop-enter");
+    modalCard.classList.add("modal-pop-exit");
+
+    // 等動畫播完再真正隱藏（0.25 秒）
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+    }, 250);
+  }
+
+  document.querySelectorAll(".timeline-more-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const { title, date, desc, images } = btn.dataset;
+
+      modalTitle.textContent = title || "";
+      modalPeriod.textContent = date || "";
+      modalDesc.textContent = desc || "";
+
+      modalImages = (images || "")
+        .split("|")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      modalImageIndex = 0;
+      updateModalImage();
+      openModal();
+    });
+  });
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", closeModal);
+  }
+
+  if (modal) {
+    // 點背景關閉
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  if (modalPrev) {
+    modalPrev.addEventListener("click", () => {
+      if (!modalImages.length) return;
+      modalImageIndex -= 1;
+      updateModalImage();
+    });
+  }
+
+  if (modalNext) {
+    modalNext.addEventListener("click", () => {
+      if (!modalImages.length) return;
+      modalImageIndex += 1;
+      updateModalImage();
+    });
+  }
+
+  // ESC 關閉
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
 </script>

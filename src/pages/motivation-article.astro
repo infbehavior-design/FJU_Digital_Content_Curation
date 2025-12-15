@@ -1,0 +1,143 @@
+---
+// src/pages/article-example.astro
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+const article = {
+  title: "起心動念｜新莊工業發展與咖啡坊前身介紹",
+  subtitle: "從電子零件工廠到咖啡坊：一段關於地方產業轉型的故事",
+  date: "2025-10-01",
+  category: "專欄文章",
+};
+---
+
+<Layout>
+  
+  <section class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20">
+    <!-- 外層卡片容器 -->
+    <article
+      class="w-[90vw] max-w-4xl bg-[#f7e1c6] rounded-[32px] shadow-[0_40px_80px_rgba(0,0,0,0.25)]
+            px-6 md:px-10 lg:px-14 py-10 md:py-12 space-y-8 md:space-y-10"
+    >
+      <!-- 上方標題區 -->
+      <header class="space-y-4">
+        <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]">
+          <span class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold">
+            {article.category}
+          </span>
+          <span class="opacity-80">{article.date}</span>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight">
+          {article.title}
+        </h1>
+
+        <p class="text-base md:text-lg text-[#5c3921] leading-relaxed">
+          {article.subtitle}
+        </p>
+      </header>
+
+      <!-- 首圖區 -->
+      <figure class="space-y-4">
+        <div
+          class="overflow-hidden rounded-[28px] shadow-[0_30px_60px_rgba(0,0,0,0.35)]
+                max-h-[480px]"
+        >
+          <!-- 換成你的首圖 -->
+          <img
+            src="/images/your-hero-image.jpg"
+            alt="文章代表圖片"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <figcaption class="text-xs md:text-sm text-[#7b5130] opacity-80">
+          圖說：這裡可以放首圖的簡短說明文字。
+        </figcaption>
+      </figure>
+
+      <!-- 內文：你可以自由增減段落與圖片區塊 -->
+      <div class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg">
+        <section class="space-y-4">
+          <h2 class="text-2xl md:text-3xl font-bold">
+            一、從工業巷弄開始的故事
+          </h2>
+          <p>
+            在新莊的巷弄裡，電子零件工廠曾經是街區日常的一部分。機台聲、貨車進出，
+            構成了這個地方對「工作」與「城市發展」的集體記憶。
+          </p>
+          <p>
+            隨著產業型態改變，原本的工廠開始思考轉型的可能——如何在保留家族記憶的同時，
+            又能回應當代對生活風格、社群交流的新想像。
+          </p>
+        </section>
+
+        <!-- 內文中穿插圖片雙欄區 -->
+        <section class="space-y-4">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div
+              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
+                    bg-[#d6b18d]"
+            >
+              <img
+                src="/images/factory.jpg"
+                alt="工廠外觀"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
+                    bg-[#d6b18d]"
+            >
+              <img
+                src="/images/cafe.jpg"
+                alt="咖啡坊一隅"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <p class="text-sm md:text-base text-[#5c3921] opacity-90">
+            左圖為咖啡坊前身的電子零件工廠，右圖則是空間轉型後的樣貌。
+            透過空間的改造，工業痕跡並沒有被完全抹去，而是成為敘事的一部分。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl md:text-3xl font-bold">
+            二、從「工作場域」到「生活場景」
+          </h2>
+          <p>
+            對創辦人而言，這不只是換了一個產業，而是重新整理與家族、土地的關係。
+            咖啡坊承接了工廠時期累積的人際網絡，讓熟客、鄰居、朋友有了一個新的聚集點。
+          </p>
+          <p>
+            本篇專欄將從空間、人物與日常互動三個面向，帶大家一步一步走進這段轉型歷程，
+            看見新莊在地產業背後的故事。
+          </p>
+        </section>
+
+        <!-- 你可以繼續加更多 section ... -->
+      </div>
+
+      <!-- 分隔線 -->
+      <div class="border-t border-[#d3a97f] pt-8 md:pt-10 mt-4"></div>
+
+      <!-- 返回按鈕區 -->
+      <div class="flex justify-center">
+        <button
+          type="button"
+          onclick="history.back()"
+          class="inline-flex items-center gap-2 rounded-full bg-[#3a2213] text-[#fce5c9]
+                px-6 md:px-8 py-3 text-sm md:text-base font-semibold
+                shadow-[0_15px_30px_rgba(0,0,0,0.45)]
+                transition-transform transition-shadow duration-200
+                hover:-translate-y-0.5 hover:shadow-[0_22px_45px_rgba(0,0,0,0.55)]
+                hover:bg-[#fce5c9] hover:text-[#3a2213]"
+        >
+          <span class="text-lg">←</span>
+          <span>返回上一頁</span>
+        </button>
+      </div>
+    </article>
+  </section>
+
+</Layout>

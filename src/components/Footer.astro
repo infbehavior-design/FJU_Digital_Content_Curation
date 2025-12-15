@@ -1,0 +1,226 @@
+---
+
+---
+
+<footer class="footer">
+	<div class="footer-container">
+
+		<div class="footer-content">
+			<div class="footer-left">
+				<div class="contact-section">
+					<h3>資訊使用者行為探索</h3>
+					<p>
+						<a href="mailto:contact@sitcon.org" class="contact-email">指導教授：曾品方</a><br />
+						
+					</p>
+				</div>
+
+				<div class="conference-title">輔仁大學圖書資訊學系<br>Fu Jen Catholic University <br>Department of Library and Information Science</div>
+			</div>
+
+
+				<div class="past-websites">
+					<h3>小組成員</h3>
+                    <p>412040280 黃以信   |    412040137 呂品俞 </p>
+                    <p>412040474 劉祖彣   |    412040228 詹鈴蓁 </p>
+                    <p>412040113 林芊涵   |    412040266 林芷齊 </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background-color: #f5f5f5;
+	}
+
+	p {
+		line-height: 2;
+		max-width: 51rem;
+	}
+
+	a {
+		color: inherit;
+		transition: color 0.3s ease-out;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #0171e3;
+	}
+
+	h3 {
+		font-size: 1.3rem;
+		color: #000;
+		margin-bottom: 0.5rem;
+	}
+
+	.footer-container {
+		max-width: 1200px;
+		margin: auto;
+		padding: 4rem 2rem 3rem;
+	}
+
+	.collaboration-section {
+		margin-bottom: 3rem;
+	}
+
+	.collaboration-title {
+		font-size: 2.5rem;
+		font-weight: bold;
+		color: #000;
+		margin: 0 0 20px 0;
+		display: inline-block;
+	}
+
+	.footer-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 60px;
+		align-items: start;
+	}
+
+	.footer-left {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.contact-section {
+		margin-bottom: 20px;
+	}
+
+	.conference-title {
+		font-size: 1.2rem;
+		font-weight: bold;
+		letter-spacing: 2.1px;
+		margin-bottom: 1rem;
+	}
+
+	.footer-right {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.social-section {
+		margin-bottom: 20px;
+	}
+
+	.social-icons {
+		margin-top: 0.5rem;
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.social-icon {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #424242;
+		text-decoration: none;
+		transition:
+			transform 0.3s ease,
+			filter 0.3s ease;
+	}
+
+	.social-icon:hover {
+		transform: scale(1.1);
+		filter: brightness(1.2);
+	}
+
+	.years-grid {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 0.5rem;
+		letter-spacing: 0.5px;
+	}
+
+	.year-link {
+		text-decoration: none;
+		color: #333;
+		font-size: 0.9rem;
+	}
+
+	@media screen and (max-width: 48rem) {
+		.footer-content {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.collaboration-title {
+			font-size: 2rem;
+		}
+
+		.years-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.social-icons {
+			justify-content: center;
+		}
+
+		.faq-question {
+			font-size: 1.3rem;
+		}
+	}
+
+	@media screen and (max-width: 30rem) {
+		.footer {
+			padding: 2rem 0 30px;
+		}
+
+		.collaboration-title {
+			font-size: 1.8rem;
+		}
+
+		.years-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media screen {
+		.qrcode-container,
+		.qrcode-text {
+			display: none;
+		}
+	}
+
+	@media print {
+		footer {
+			break-inside: avoid;
+		}
+
+		p {
+			text-wrap: balance;
+		}
+
+		.collaboration-section {
+			display: flex;
+			gap: 26pt;
+			justify-content: space-between;
+		}
+
+		.qrcode-container,
+		.qrcode-text {
+			display: block;
+		}
+
+		.qrcode-container {
+			text-align: center;
+		}
+
+		.qrcode {
+			height: 80pt;
+		}
+
+		.conference-title {
+			margin-top: 150pt;
+		}
+	}
+</style>
