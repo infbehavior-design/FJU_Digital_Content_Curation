@@ -52,7 +52,30 @@ import "../styles/global.css";
 
 /* 左半部文字 */
 .left {
+  position: relative;
   max-width: 60%;
+  padding: 2rem 1rem; /* 讓文字不貼邊 */
+}
+
+/* 背後的咖啡豆 */
+.left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("src/assets/coffee1.png"); /* 換成你的圖 */
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 420px auto;
+
+  opacity: 0.3; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 確保文字在上層 */
+.left > * {
+  position: relative;
+  z-index: 1;
 }
 
 

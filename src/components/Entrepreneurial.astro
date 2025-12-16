@@ -12,7 +12,9 @@ import "../styles/global.css";
       從家族電子零件廠走出來的創業者，帶著職人精神重新打造屬於自己的道路。過去在工廠中累積的精準、耐心與對品質的堅持，如今轉化為一杯杯細緻的咖啡。（GPT生成）
     </p>
 
-    <button class="more-info">了解更多</button>
+    <a href="/entrepreneurial-article" class="more-info">
+      了解更多
+    </a>
   </div>
 
   <!-- 右側兩張錯位照片 -->
@@ -51,7 +53,30 @@ import "../styles/global.css";
 
 /* 左半部文字 */
 .left {
+  position: relative;
   max-width: 60%;
+  padding: 2rem 1rem; /* 讓文字不貼邊 */
+}
+
+/* 背後的咖啡豆 */
+.left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("src/assets/coffee2.png"); /* 換成你的圖 */
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 420px auto;
+
+  opacity: 0.3; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 確保文字在上層 */
+.left > * {
+  position: relative;
+  z-index: 1;
 }
 
 

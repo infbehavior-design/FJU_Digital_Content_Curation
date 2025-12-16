@@ -2,7 +2,7 @@
 import "../styles/global.css";
 ---
 
-<section id="motivation" class="motivation-container">
+<section id="lifestory" class="lifestory-container">
   <div class="left fade-in">
     <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">人物故事</h2>
     <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
@@ -12,7 +12,7 @@ import "../styles/global.css";
       來自於第一手的採訪，經過二次整理，帶大家看到兩位咖啡師的故事，包括對咖啡的堅持，本人的個性亮點等。
     </p>
 
-    <a href="/motivation-article" class="more-info">
+    <a href="/lifestory-article" class="more-info">
       了解更多
     </a>
 
@@ -38,7 +38,7 @@ import "../styles/global.css";
 </section>
 
 <style>
-.motivation-container {
+.lifestory-container {
   background-color: #e8c9a8;
   width: 100%;
   height: 100vh; /* Hero 全螢幕 */
@@ -50,7 +50,30 @@ import "../styles/global.css";
 
 /* 左半部文字 */
 .left {
+  position: relative;
   max-width: 60%;
+  padding: 2rem 1rem; /* 讓文字不貼邊 */
+}
+
+/* 背後的咖啡豆 */
+.left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("src/assets/coffee3.png"); /* 換成你的圖 */
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 420px auto;
+
+  opacity: 0.3; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 確保文字在上層 */
+.left > * {
+  position: relative;
+  z-index: 1;
 }
 
 
