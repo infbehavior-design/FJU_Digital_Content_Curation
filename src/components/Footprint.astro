@@ -1,8 +1,28 @@
 ---
-/**
- * 課程足跡 + Popup 視窗版本
- * cards 裡多加了 description & images，拿來填 popup 的內容。
- */
+import "../styles/global.css";
+
+const footprintImgs = import.meta.glob(
+  "/src/assets/Footprint/*.{jpg,jpeg,png,webp}",
+  { eager: true }
+);
+
+function getPreviewSrc(imgPath: string) {
+  if (!imgPath) return "";
+
+  const filename = imgPath.split("/").pop();
+  const key = `/src/assets/Footprint/${filename}`;
+
+  const mod: any = footprintImgs[key];
+  const d = mod?.default;
+
+  // 1) Vite url: string
+  if (typeof d === "string") return d;
+
+  // 2) Astro ImageMetadata: { src, width, height, ... }
+  if (d && typeof d === "object" && typeof d.src === "string") return d.src;
+
+  return "";
+}
 
 const cards = [
   {
@@ -10,11 +30,11 @@ const cards = [
     date: "114.09 ~ 114.09",
     imageLabel: "Image",
     description:
-      "在課程一開始，帶領同學認識新莊產業轉型的背景，並說明本學期的專題方向與分組規劃，協助大家建立共同的敘事骨架與研究目標。",
+      "課程初期，老師帶領我們認識資訊行為研究的不同範疇，說明資訊使用者在各種情境下的行為特性，並比較資訊使用的通用模式與專業人士模式，協助我們建立分析資訊行為的理論基礎，為後續實作奠定理解框架。",
     // TODO：把下面路徑換成你自己的圖片
     images: [
-      "/images/footprint/basis-1.jpg",
-      "/images/footprint/basis-2.jpg",
+      "src/assets/Footprint/Basis-1.jpg",
+      "src/assets/Footprint/Basis-2.jpg",
     ],
   },
   {
@@ -22,10 +42,10 @@ const cards = [
     date: "114.09 ~ 114.09",
     imageLabel: "Image",
     description:
-      "透過課堂講授與案例分析，建立學生對數位敘事與資訊使用者行為的基本概念，並練習拆解真實案例。",
+      "課程中邀請輔大新聞傳播系陳順孝教授，分享新聞報導與訪談的實務經驗，說明採訪工作的核心價值與技巧，並透過實際案例分析，讓我們理解如何提問、傾聽與追問，為後續採訪作業做好準備。",
     images: [
-      "/images/footprint/training-1.jpg",
-      "/images/footprint/training-2.jpg",
+      "src/assets/Footprint/training-1.jpg",
+      "src/assets/Footprint/training-2.jpg",
     ],
   },
   {
@@ -33,10 +53,12 @@ const cards = [
     date: "114.09 ~ 114.10",
     imageLabel: "Image",
     description:
-      "帶學生實際走訪 Benefarm 培樂儂與周邊街區，觀察空間、與店主交流，累積後續故事創作所需的一手素材。",
+      "老師帶領我們前往培樂儂進行實地參訪，了解咖啡從種植、選豆、烘焙到生產的完整流程，並結合沖煮咖啡的實際操作，透過視覺、聽覺與味覺等多重感官體驗，加深我們對咖啡知識與資訊傳遞歷程的理解。",
     images: [
-      "/images/footprint/visit-1.jpg",
-      "/images/footprint/visit-2.jpg",
+      "src/assets/Footprint/Visit-1.jpg",
+      "src/assets/Footprint/Visit-2.jpg",
+      "src/assets/Footprint/Visit-3.jpg",
+      "src/assets/Footprint/Visit-4.jpg",
     ],
   },
   {
@@ -44,10 +66,10 @@ const cards = [
     date: "114.10 ~ 114.11",
     imageLabel: "Image",
     description:
-      "各組整理田野資料、撰寫腳本與分鏡，思考如何把複雜的訪談內容轉換成清楚、有層次的故事線。",
+      "在完成參訪後，老師回到課堂中介紹 Berry-picking、Sense-making、Wilson 與 Leckie 等資訊行為理論，協助我們將實地觀察與理論連結，進一步理解資訊需求形成、搜尋與使用的過程，作為後續採訪與分析的重要依據。",
     images: [
-      "/images/footprint/prepare-1.jpg",
-      "/images/footprint/prepare-2.jpg",
+      "src/assets/Footprint/prepare-1.jpg",
+      "src/assets/Footprint/prepare-2.jpg",
     ],
   },
   {
@@ -55,22 +77,25 @@ const cards = [
     date: "114.11.12",
     imageLabel: "Image",
     description:
-      "安排與咖啡坊創辦人及相關角色的深度訪談，記錄他們對產業轉型、生活選擇與在地連結的看法。",
+      "我們再次前往培樂儂，針對參訪後產生的疑問與研究方向，訪談兩位咖啡師，深入了解其專業經驗與資訊使用方式，並透過組內分工合作，各司其職，完成本次採訪與資料蒐集任務。",
     images: [
-      "/images/footprint/interview-1.jpg",
-      "/images/footprint/interview-2.jpg",
+      "src/assets/Footprint/Interview-1.jpg",
+      "src/assets/Footprint/Interview-2.jpg",
+      "src/assets/Footprint/Interview-3.jpg",
+      "src/assets/Footprint/Interview-4.jpg",
     ],
   },
   {
-    title: "成果發表",
+    title: "幕後點滴",
     date: "114.11 ~ 114.12",
     imageLabel: "Image",
     description:
-      "各組將影像、聲音與文字整合成最終作品，在公開發表中與同學、師長與在地夥伴分享成果與回饋。",
+      "在參訪與採訪結束後，各組開始投入成果製作，有人負責網站架構與視覺呈現，有人進行影片剪輯與內容統整，透過團隊合作整合不同形式的資訊，共同完成成果發表前的準備工作。",
     images: [
-      "/images/footprint/showcase-1.jpg",
-      "/images/footprint/showcase-2.jpg",
-      "/images/footprint/showcase-3.jpg",
+      "src/assets/Footprint/Behind-1.jpg",
+      "src/assets/Footprint/Behind-2.jpg",
+      "src/assets/Footprint/Behind-3.jpg",
+      "src/assets/Footprint/Behind-4.jpg",
     ],
   },
 ];
@@ -120,13 +145,21 @@ const cards = [
 
               <div class="text-sm md:text-base mb-6">{card.date}</div>
 
-              <div
-                class="w-full aspect-[4/3] rounded-3xl bg-[#e6c59b]
-                       flex items-center justify-center
-                       text-xl font-semibold text-[#5b4026] mb-6">
-                {card.imageLabel}
+              <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden bg-[#e6c59b] mb-6">
+                {getPreviewSrc(card.images?.[0]) ? (
+                  <img
+                    src={getPreviewSrc(card.images?.[0])}
+                    alt={`${card.title} 預覽`}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center text-xl font-semibold text-[#5b4026]">
+                    {card.imageLabel}
+                  </div>
+                )}
               </div>
-
+              
               <button
                 type="button"
                 class="timeline-more-btn mt-auto px-7 py-2 rounded-full border border-[#f6e2c9] text-[#f6e2c9] tracking-[0.12em] text-sm md:text-base transition hover:bg-[#f6e2c9] hover:text-[#424729]"
