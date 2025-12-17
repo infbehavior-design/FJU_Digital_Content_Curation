@@ -31,7 +31,6 @@ const cards = [
     imageLabel: "Image",
     description:
       "課程初期，老師帶領我們認識資訊行為研究的不同範疇，說明資訊使用者在各種情境下的行為特性，並比較資訊使用的通用模式與專業人士模式，協助我們建立分析資訊行為的理論基礎，為後續實作奠定理解框架。",
-    // TODO：把下面路徑換成你自己的圖片
     images: [
       "src/assets/Footprint/Basis-1.jpg",
       "src/assets/Footprint/Basis-2.jpg",
@@ -106,9 +105,7 @@ const cards = [
 ---
 
 <section id="footprint" class="min-h-screen flex items-center justify-center bg-[#b3734f]">
-  <!-- 寬度 = 90vw，但最大不超過 1280px -->
   <div class="w-[90vw] max-w-[1280px] mx-auto text-center px-4 lg:px-8">
-    <!-- 標題 -->
     <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#fff8f0]/70 mb-3">
       FOOTPRINT
     </p>
@@ -117,7 +114,6 @@ const cards = [
     </h2>
 
     <div class="flex items-center gap-6">
-      <!-- 左箭頭 -->
       <button
         id="timeline-prev"
         class="w-14 h-14 rounded-full border-2 border-[#f6e2c9] text-[#f6e2c9] flex items-center justify-center shrink-0 transition
@@ -126,66 +122,73 @@ const cards = [
         ←
       </button>
 
-      <!-- 捲動容器：snap-x + snap-mandatory -->
       <div
         id="timeline-scroll"
         class="relative flex-1 overflow-x-auto scroll-smooth snap-x snap-mandatory flex gap-6
         px-4 sm:px-8 lg:px-10 py-4">
-        <!-- 左邊留白用的「隱形卡」 -->
+
         <div class="shrink-0 w-[10vw] sm:w-[12vw] lg:w-[14vw] snap-none"></div>
 
-        {cards.map((card, idx) => (
-          <article
-            data-index={idx}
-            class="timeline-snap-card shrink-0 snap-center w-[260px] md:w-[320px]">
-            <div
-              class="timeline-snap-inner flex flex-col items-center justify-start
+        {cards.map((card, idx) => {
+          // ✅ 這裡先把「所有圖片」轉成真正可用的打包 URL
+          const resolvedImages = (card.images || [])
+            .map((p) => getPreviewSrc(p))
+            .filter(Boolean);
+
+          const previewSrc = resolvedImages[0] || "";
+
+          return (
+            <article
+              data-index={idx}
+              class="timeline-snap-card shrink-0 snap-center w-[260px] md:w-[320px]">
+              <div
+                class="timeline-snap-inner flex flex-col items-center justify-start
                      rounded-[32px] bg-[#424729] text-[#fff8f0]
                      shadow-[0_10px_30px_rgba(0,0,0,0.25)]
                      px-6 pt-8 pb-10 transition-transform duration-300">
 
-              <div class="text-2xl mb-2">🍃</div>
+                <div class="text-2xl mb-2">🍃</div>
 
-              <h3 class="text-2xl md:text-3xl tracking-[0.08em] mb-2 text-[#fff8f0]">
-                {card.title}
-              </h3>
+                <h3 class="text-2xl md:text-3xl tracking-[0.08em] mb-2 text-[#fff8f0]">
+                  {card.title}
+                </h3>
 
-              <div class="text-sm md:text-base mb-6">{card.date}</div>
+                <div class="text-sm md:text-base mb-6">{card.date}</div>
 
-              <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden bg-[#e6c59b] mb-6">
-                {getPreviewSrc(card.images?.[0]) ? (
-                  <img
-                    src={getPreviewSrc(card.images?.[0])}
-                    alt={`${card.title} 預覽`}
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div class="w-full h-full flex items-center justify-center text-xl font-semibold text-[#5b4026]">
-                    {card.imageLabel}
-                  </div>
-                )}
+                <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden bg-[#e6c59b] mb-6">
+                  {previewSrc ? (
+                    <img
+                      src={previewSrc}
+                      alt={`${card.title} 預覽`}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center text-xl font-semibold text-[#5b4026]">
+                      {card.imageLabel}
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  class="timeline-more-btn mt-auto px-7 py-2 rounded-full border border-[#f6e2c9] text-[#f6e2c9] tracking-[0.12em] text-sm md:text-base transition hover:bg-[#f6e2c9] hover:text-[#424729]"
+                  data-index={idx}
+                  data-title={card.title}
+                  data-date={card.date}
+                  data-desc={card.description}
+                  data-images={resolvedImages.join("|")}
+                >
+                  了解更多
+                </button>
               </div>
-              
-              <button
-                type="button"
-                class="timeline-more-btn mt-auto px-7 py-2 rounded-full border border-[#f6e2c9] text-[#f6e2c9] tracking-[0.12em] text-sm md:text-base transition hover:bg-[#f6e2c9] hover:text-[#424729]"
-                data-index={idx}
-                data-title={card.title}
-                data-date={card.date}
-                data-desc={card.description}
-                data-images={card.images.join("|")}
-              >
-                了解更多
-              </button>
-            </div>
-          </article>
-        ))}
-        <!-- 右邊留白用的「隱形卡」 -->
+            </article>
+          );
+        })}
+
         <div class="shrink-0 w-[10vw] sm:w-[12vw] lg:w-[14vw] snap-none"></div>
       </div>
 
-      <!-- 右箭頭 -->
       <button
         id="timeline-next"
         class="w-14 h-14 rounded-full border-2 border-[#f6e2c9] text-[#f6e2c9] flex items-center justify-center shrink-0 transition
@@ -195,7 +198,6 @@ const cards = [
       </button>
     </div>
 
-    <!-- 下方裝飾 -->
     <div class="mt-8 text-xs tracking-[0.4em] text-[#fff8f0]/80 select-none">
       · · · · · · · · · · · ·
     </div>
@@ -211,7 +213,6 @@ const cards = [
     id="footprint-modal-card"
     class="modal-card relative w-full max-w-5xl bg-[#fdf5ee] rounded-[32px] shadow-2xl overflow-hidden flex flex-col md:flex-row gap-0"
   >
-    <!-- 關閉按鈕 -->
     <button
       id="footprint-modal-close"
       type="button"
@@ -221,7 +222,6 @@ const cards = [
       ×
     </button>
 
-    <!-- 左側：照片輪播區 -->
     <div class="md:w-[45%] bg-[#e6dacf] flex items-center justify-center p-5">
       <div class="relative w-full aspect-[4/5] max-h-[480px] rounded-3xl overflow-hidden bg-black/10">
         <img
@@ -231,7 +231,6 @@ const cards = [
           class="w-full h-full object-contain"
         />
 
-        <!-- 左右切換按鈕 -->
         <button
           id="footprint-modal-image-prev"
           type="button"
@@ -258,7 +257,6 @@ const cards = [
       </div>
     </div>
 
-    <!-- 右側：文字敘述（Tag 已拿掉） -->
     <div class="md:w-[55%] p-6 md:p-9 text-left max-h-[80vh] overflow-y-auto">
       <h3
         id="footprint-modal-title"
@@ -283,7 +281,6 @@ const cards = [
     </div>
   </div>
 </div>
-
 
 <!-- 補一點全域 CSS：放大效果 + 捲軸隱藏 -->
 <style is:global>
