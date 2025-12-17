@@ -59,6 +59,27 @@ const navItems = [
 
   const mobileMediaQuery = window.matchMedia('(max-width: 1024px)');
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const scrollToHash = (hash) => {
+    const id = hash?.startsWith('#') ? hash.slice(1) : hash;
+    if (!id) return;
+
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    // 依使用者系統偏好：減少動態就不要 smooth
+    const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+
+    target.scrollIntoView({ behavior, block: 'start' });
+
+    // 更新網址 hash，但不要讓瀏覽器再跳一次
+    try {
+      history.pushState(null, '', `#${id}`);
+    } catch (e) {}
+  };
+
+
   // --- Collapsed state persistence ---
   const COLLAPSE_KEY = 'sidebar-collapsed';
   const setCollapsed = (collapsed) => {
@@ -116,11 +137,19 @@ const navItems = [
   }
 
   // 點連結後自動收起行動版清單
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (!mobileMediaQuery.matches || !nav || !navToggle) return;
-      nav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
+ navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+
+      e.preventDefault();          // ✅ 阻止瞬間跳
+      scrollToHash(href);          // ✅ 改成順滑滾動
+
+      // 點完後自動收起行動版清單（保留你原本行為）
+      if (mobileMediaQuery.matches && nav && navToggle) {
+        nav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   });
 
