@@ -1,41 +1,33 @@
 ---
 import "../styles/global.css";
+import lifeStory1 from "../assets/LifeStory1.jpg";
+import lifeStory2 from "../assets/LifeStory2.jpg";
+import coffee3 from "../assets/coffee3.png";
 ---
 
 <section id="lifestory" class="lifestory-container">
-  <div class="left fade-in">
+  <div class="left fade-in" style={`--bean-url: url(${coffee3.src});`}>
     <p class="text-base md:text-lg tracking-[0.25em] uppercase text-[#5c3b2e]/70 mb-3">
-        STORY
+      LIFESTORY
     </p>
-    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">人物故事</h2>
+    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">生命故事</h2>
     <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
-      －來自兩位咖啡師的自述
+      一杯咖啡背後的選擇與堅持
     </h3>
     <p class="font-light mb-4 text-base md:text-lg lg:text-xl">
-      來自於第一手的採訪，經過二次整理，帶大家看到兩位咖啡師的故事，包括對咖啡的堅持，本人的個性亮點等。
+      轉型不只是空間改變，更是人生路徑的重新選擇。從產線到吧檯，
+      每一步都累積成今日的風味。（GPT生成）
     </p>
 
-    <a href="/lifestory-article" class="more-info">
+    <a href={`${import.meta.env.BASE_URL}lifestory-article`} class="more-info">
       了解更多
     </a>
-
   </div>
 
-  <!-- 右側兩張錯位照片 -->
   <div class="right fade-in">
     <div class="photo-row">
-      <!-- 左邊那張 -->
-      <img
-        src="src/assets/LifeStory1.jpg"
-        alt="從電子零件廠留存至今的標語牌"
-        class="photo photo-left"
-      />
-      <!-- 右邊那張 -->
-      <img
-        src="src/assets/LifeStory2.jpg"
-        alt="從電子零件廠留存至今的標語牌"
-        class="photo photo-right"
-      />
+      <img src={lifeStory1.src} alt="生活故事照片1" class="photo photo-left" />
+      <img src={lifeStory2.src} alt="生活故事照片2" class="photo photo-right" />
     </div>
   </div>
 </section>

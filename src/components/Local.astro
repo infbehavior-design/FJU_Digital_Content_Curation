@@ -1,45 +1,43 @@
 ---
 import "../styles/global.css";
+import entrepreneurial1 from "../assets/Entrepreneurial-1.jpg";
+import entrepreneurial2 from "../assets/Entrepreneurial-2.jpg";
+import coffee2 from "../assets/coffee2.png";
 ---
 
-<section id="local" class="local-container">
-  <div class="left  fade-in">
+<section id="entrepreneurial" class="entrepreneurial-container">
+  <div class="left fade-in" style={`--bean-url: url(${coffee2.src});`}>
     <p class="text-base md:text-lg tracking-[0.25em] uppercase text-[#5c3b2e]/70 mb-3">
-      REVITALIZATION
+      ENTREPRENEURIAL
     </p>
-
-    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">
-        地方創生<br>
-        永續發展
-    </h2>
+    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">創業歷程</h2>
     <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
-      選豆策略、有機認證及友善環境
+      從電子零件廠到咖啡坊的足跡
     </h3>
     <p class="font-light mb-4 text-base md:text-lg lg:text-xl">
-      「經營土地，就是與大自然分享土地。」在開墾時保留原生樹種，回補從土地拿走的養分，考量生態平衡，才能讓咖啡有永續發展的機會
+      從家族電子零件廠走出來的創業者，帶著職人精神重新打造屬於自己的道路。
+      過去在工廠中累積的精準、耐心與對品質的堅持，如今轉化為一杯杯細緻的咖啡。（GPT生成）
     </p>
 
-    <a href="/local-article" class="more-info">
+    <a href={`${import.meta.env.BASE_URL}entrepreneurial-article`} class="more-info">
       了解更多
     </a>
   </div>
 
-  <!-- 右側兩張錯位照片 -->
   <div class="right fade-in">
     <div class="photo-row">
-      <!-- 左邊那張 -->
       <img
-        src="src/assets/Local1.jpg"
-        alt="咖啡坊樓梯一角的綠植"
+        src={entrepreneurial1.src}
+        alt="創業歷程照片1"
         class="photo photo-left"
       />
-      <!-- 右邊那張 -->
       <img
-        src="src/assets/Local2.jpg"
-        alt="咖啡坊的菜單"
+        src={entrepreneurial2.src}
+        alt="創業歷程照片2"
         class="photo photo-right"
       />
     </div>
+  </div>
 </section>
 
 

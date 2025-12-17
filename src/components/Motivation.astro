@@ -1,26 +1,28 @@
 ---
 import "../styles/global.css";
+import motivation1 from "../assets/Motivation1.jpg";
+import motivation2 from "../assets/Motivation2.jpg";
+import coffee1 from "../assets/coffee1.png";
 ---
 
 <section id="motivation" class="motivation-container">
-  <div class="left fade-in">
+  <div class="left fade-in" style={`--bean-url: url(${coffee1.src});`}>
     <p class="text-base md:text-lg tracking-[0.25em] uppercase text-[#5c3b2e]/70 mb-3">
-        MOTIVATION
+      MOTIVATION
     </p>
     <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">起心動念</h2>
     <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
-      新莊工業發展<br>
+      新莊工業發展<br />
       與咖啡坊前身介紹
     </h3>
     <p class="font-light mb-4 text-base md:text-lg lg:text-xl">
       新莊曾以熱鬧的工業聲響構築城市記憶，而產業轉型的腳步，
-      讓一間由工廠轉型而成的咖啡坊，成為連結過去與未來的新起點。
+      也讓這些空間逐漸轉化為更貼近生活的場域。（GPT生成）
     </p>
 
-    <a href="/motivation-article" class="more-info">
+    <a href={`${import.meta.env.BASE_URL}motivation-article`} class="more-info">
       了解更多
     </a>
-
   </div>
 
   <!-- 右側兩張錯位照片 -->
@@ -28,19 +30,20 @@ import "../styles/global.css";
     <div class="photo-row">
       <!-- 左邊那張 -->
       <img
-        src="src/assets/Motivation1.jpg"
+        src={motivation1.src}
         alt="工廠照片"
         class="photo photo-left"
       />
       <!-- 右邊那張 -->
       <img
-        src="src/assets/Motivation2.jpg"
+        src={motivation2.src}
         alt="咖啡坊前身空間"
         class="photo photo-right"
       />
     </div>
   </div>
 </section>
+
 
 <style>
 .motivation-container {
