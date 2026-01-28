@@ -11,6 +11,18 @@ import animationScript from "../scripts/animation.js?url";
     <meta name="generator" content={Astro.generator} />
 
     <title>從電子零件廠到咖啡坊——聚焦新莊在地產業轉型</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R0XWJR3RL8"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-R0XWJR3RL8");
+    </script>
   </head>
   <body>
     <slot />

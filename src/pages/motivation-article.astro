@@ -4,16 +4,17 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const article = {
-  title: "起心動念｜新莊工業發展與咖啡坊前身介紹 (GPT 生成)",
-  subtitle: "從電子零件工廠到咖啡坊：一段關於地方產業轉型的故事",
+  title: "起心動念｜新莊工業發展與咖啡坊前身介紹",
+  subtitle: "從工業聲響到咖啡香氣：新莊產業轉型下的空間與理念轉身",
   date: "2025-10-01",
   category: "專欄文章",
 };
 ---
 
 <Layout>
-  
-  <section class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20">
+  <section
+    class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20"
+  >
     <!-- 外層卡片容器 -->
     <article
       class="w-[90vw] max-w-4xl bg-[#f7e1c6] rounded-[32px] shadow-[0_40px_80px_rgba(0,0,0,0.25)]
@@ -21,14 +22,20 @@ const article = {
     >
       <!-- 上方標題區 -->
       <header class="space-y-4">
-        <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]">
-          <span class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold">
+        <div
+          class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]"
+        >
+          <span
+            class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold"
+          >
             {article.category}
           </span>
           <span class="opacity-80">{article.date}</span>
         </div>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight">
+        <h1
+          class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight"
+        >
           {article.title}
         </h1>
 
@@ -37,85 +44,109 @@ const article = {
         </p>
       </header>
 
-      <!-- 首圖區 -->
-      <figure class="space-y-4">
-        <div
-          class="overflow-hidden rounded-[28px] shadow-[0_30px_60px_rgba(0,0,0,0.35)]
-                max-h-[480px]"
-        >
-          <!-- 換成你的首圖 -->
-          <img
-            src="/images/your-hero-image.jpg"
-            alt="文章代表圖片"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <figcaption class="text-xs md:text-sm text-[#7b5130] opacity-80">
-          圖說：這裡可以放首圖的簡短說明文字。
-        </figcaption>
-      </figure>
-
-      <!-- 內文：你可以自由增減段落與圖片區塊 -->
-      <div class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg">
+      <!-- 內文：純文字版本 -->
+      <div
+        class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg"
+      >
         <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            一、從工業巷弄開始的故事
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            從工業聲響到咖啡香氣
           </h2>
           <p>
-            在新莊的巷弄裡，電子零件工廠曾經是街區日常的一部分。機台聲、貨車進出，
-            構成了這個地方對「工作」與「城市發展」的集體記憶。
+            新莊，曾是北臺灣重要的工業聚落之一。鐵工廠、電子零件製造與機械運轉的聲響，
+            長年構築起城市的日常節奏，也形塑了無數家庭的工作記憶。然而，隨著產業型態轉變
+            與城市發展推進，這些曾經高度生產導向的空間，逐漸面臨轉型的選擇——是被遺忘，
+            還是被重新定義？
           </p>
-          <p>
-            隨著產業型態改變，原本的工廠開始思考轉型的可能——如何在保留家族記憶的同時，
-            又能回應當代對生活風格、社群交流的新想像。
-          </p>
-        </section>
-
-        <!-- 內文中穿插圖片雙欄區 -->
-        <section class="space-y-4">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/factory.jpg"
-                alt="工廠外觀"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/cafe.jpg"
-                alt="咖啡坊一隅"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <p class="text-sm md:text-base text-[#5c3921] opacity-90">
-            左圖為咖啡坊前身的電子零件工廠，右圖則是空間轉型後的樣貌。
-            透過空間的改造，工業痕跡並沒有被完全抹去，而是成為敘事的一部分。
-          </p>
+          <p>培樂儂（BeneFarm）的誕生，正是在這樣的背景下展開。</p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            二、從「工作場域」到「生活場景」
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            空間保留：不是裝飾，而是致敬
           </h2>
           <p>
-            對創辦人而言，這不只是換了一個產業，而是重新整理與家族、土地的關係。
-            咖啡坊承接了工廠時期累積的人際網絡，讓熟客、鄰居、朋友有了一個新的聚集點。
+            對創辦人詹子儀（含吉）老師而言，工業並非課本上的專有名詞，而是成長血脈的一部分。出身電子電機與工業背景的他，讓他在建構咖啡烘焙空間時，不只是單純「改造一間店」，而是在舊有的工業骨架中，梳理出延續價值的可能。
           </p>
           <p>
-            本篇專欄將從空間、人物與日常互動三個面向，帶大家一步一步走進這段轉型歷程，
-            看見新莊在地產業背後的故事。
+            走進培樂儂，工廠原有的器具、顯眼的標語、沈穩的磨石子地並存在空間中。這些元素並非刻意的工業風裝飾，而是對產業轉型的沈默致敬。
           </p>
         </section>
 
-        <!-- 你可以繼續加更多 section ... -->
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            理念轉向：把友善落實在每一次選擇
+          </h2>
+          <p>
+            然而，真正點燃轉型火花的，是詹子儀老師對未來的深層價值選擇：「環境友善」。從大學鑽研自烘豆開始，他便堅信咖啡師的職責是作為土地與飲者間的橋樑。透過對每一支豆子風味的極致探求，他將「對環境好」的理念，轉化為一杯咖啡從入口到回韻間，那份舒服而完整的感官體驗。。
+          </p>
+          <p>
+            這個理念並非行銷標語，而是落實在每一次選豆、每一筆採購、每一個流程判斷之中。
+            他相信，每個產區、每一支咖啡豆，都有其最理想的呈現方式，而烘豆師的角色，
+            是把這樣的風味完整地帶給飲用者，讓一杯咖啡從入口到回韻，
+            成為「舒服而完整的過程」。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            營運補位：讓永續變成「日常可負擔」
+          </h2>
+          <p>
+            另一位關鍵推手 James 老師，則為培樂儂注入了市場的厚度。擁有通訊與 3C
+            通路背景的他深知：理想若要普及，必須具備被大眾親近的基礎。咖啡，正是那樣一個保存性佳、受眾廣泛且極具生活感的媒介。於是，「負擔得起的永續生活」成為培樂儂的品牌核心——讓環境價值不再高不可攀，而是實踐於每一天飲用的咖啡中。
+          </p>
+          <p>
+            對他而言，咖啡是一個極具潛力的媒介——保存相對容易、消費族群廣泛，
+            能夠承載環境永續的價值，並透過日常飲用被反覆實踐。
+            因此，「負擔得起的永續生活，從一杯好咖啡開始」，
+            成為培樂儂始終堅持的方向。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            工業到生活：空間改變，也改變關係
+          </h2>
+          <p>
+            當電子電機工廠轉化為咖啡烘焙工作室，改變的不只是產業類型，
+            也是一種空間與生活的關係。工業生產的節奏，轉化為烘焙時機的精準掌握；
+          </p>
+          <p>
+            這樣的轉型，使原本略顯距離感的工業空間，成為更貼近生活、能被走進、被感受的場域。
+            對造訪者而言，懷舊的工業元素不僅帶來在地與樸實的氛圍，
+            也隱約傳遞著一份後輩對先輩的感恩之情。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            回到新莊：地方連結仍在生成
+          </h2>
+          <p>
+            回到新莊這塊土地，兩位創辦人都清楚意識到，地方連結仍在持續生成之中。
+            無論是參與在地友善市集，或是思考未來十年如何更深度投入地方創生，
+            培樂儂選擇以自身穩定的基礎，逐步回應這座城市的轉型課題。
+            從工業到咖啡，從製造到分享，他們相信，當理念被實踐、被喝進日常生活裡，
+            改變便會悄然累積。
+          </p>
+          <p>
+            這正是培樂儂「起心動念」的所在——不是拋棄過去，而是讓工業記憶，
+            在新的生活形式中繼續發聲。
+          </p>
+        </section>
       </div>
 
       <!-- 分隔線 -->
@@ -139,5 +170,4 @@ const article = {
       </div>
     </article>
   </section>
-
 </Layout>

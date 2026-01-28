@@ -1,19 +1,21 @@
 ---
-// src/pages/article-example.astro
+// src/pages/motivation-article.astro
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const article = {
-  title: "人物故事｜來自兩位咖啡師的自述",
-  subtitle: "來自於第一手的採訪，經過二次整理，帶大家看到兩位咖啡師的故事，包括對咖啡的堅持，本人的個性亮點等。",
-  date: "yyyy-mm-dd",
-  category: "專欄文章",
+  title: "人物故事｜一杯咖啡背後的選擇與堅持",
+  subtitle:
+    "轉型不只是空間改變，更是人生路徑的重新選擇。從產線到吧檯，每一步都累積成今日的風味。",
+  date: "2025-10-01",
+  category: "人物專欄",
 };
 ---
 
 <Layout>
-  
-  <section class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20">
+  <section
+    class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20"
+  >
     <!-- 外層卡片容器 -->
     <article
       class="w-[90vw] max-w-4xl bg-[#f7e1c6] rounded-[32px] shadow-[0_40px_80px_rgba(0,0,0,0.25)]
@@ -21,14 +23,20 @@ const article = {
     >
       <!-- 上方標題區 -->
       <header class="space-y-4">
-        <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]">
-          <span class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold">
+        <div
+          class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]"
+        >
+          <span
+            class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold"
+          >
             {article.category}
           </span>
           <span class="opacity-80">{article.date}</span>
         </div>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight">
+        <h1
+          class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight"
+        >
           {article.title}
         </h1>
 
@@ -37,80 +45,89 @@ const article = {
         </p>
       </header>
 
-      <!-- 首圖區 -->
-      <figure class="space-y-4">
-        <div
-          class="overflow-hidden rounded-[28px] shadow-[0_30px_60px_rgba(0,0,0,0.35)]
-                max-h-[480px]"
-        >
-          <!-- 換成你的首圖 -->
-          <img
-            src="/images/your-hero-image.jpg"
-            alt="文章代表圖片"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <figcaption class="text-xs md:text-sm text-[#7b5130] opacity-80">
-          圖說：這裡可以放首圖的簡短說明文字。
-        </figcaption>
-      </figure>
-
-      <!-- 內文：你可以自由增減段落與圖片區塊 -->
-      <div class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg">
+      <!-- 內文 -->
+      <div
+        class="space-y-10 md:space-y-14 text-[#3a2213] leading-relaxed text-base md:text-lg"
+      >
+        <!-- 人物一 -->
         <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            一、章節一
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            詹子儀／含吉｜把風味留下來，也把價值帶下去的人
           </h2>
+
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字。
+            對詹子儀（含吉）老師而言，咖啡從來不是一時的選擇，而是一條長時間累積而成的道路。
+            早在大學時期，他便對咖啡的一切產生濃厚興趣，透過網路同好社團結識朋友，
+            開始自行郵購生豆、在家烘焙，並與各地的咖啡愛好者交流。
+            他也不斷走訪咖啡館與咖啡工廠，逐步建立對咖啡風味與產業結構的理解。
           </p>
+
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字示範文字示範文字。
+            真正促使他做出人生轉向的，並不是單一事件，而是一段反覆思索未來的過程。
+            在前一份工作的後期，他開始重新思考自己想投入的事業樣貌——
+            如果工作能夠回應對環境的關心，是否能更貼近內心的價值？
+            在荒野親子團與 James 老師的相遇，讓這個想法逐漸具體化，
+            他選擇將自身既有的專業與經驗，投入一條以「對地球友善」為核心的咖啡之路。
+          </p>
+
+          <p>
+            在烘焙上，詹子儀老師始終相信，每一個產區、每一支豆子，都有它最理想的表現位置。
+            他認為烘豆師的工作不是創造風味，而是將豆子本身的特質完整帶出。
+            他特別重視咖啡從入口到回韻的整體感受，
+            希望消費者喝到的是一段「完整而舒服的過程」， 而不只是片段的刺激。
+          </p>
+
+          <p>
+            談到永續，他並不習慣將理念包裝成口號。
+            在現實條件尚未完美的情況下，他選擇從可實踐的地方開始，
+            例如推廣包材的再利用，先在身邊落實，再透過網路分享經驗。
+            他始終相信，小小的行動，當被持續累積時，就能成為改變的力量。
           </p>
         </section>
 
-        <!-- 內文中穿插圖片雙欄區 -->
+        <!-- 人物二 -->
         <section class="space-y-4">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/factory.jpg"
-                alt="工廠外觀"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/cafe.jpg"
-                alt="咖啡坊一隅"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <p class="text-sm md:text-base text-[#5c3921] opacity-90">
-            示範文字示範文字示範文字示範文字示範文字示範文字示範文字。
-          </p>
-        </section>
-
-        <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            二、章節二
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            James｜讓理念走進日常、被多數人選擇的那條路
           </h2>
+
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字。
+            James 老師與咖啡的關係，始於單純的喜歡，也來自一次務實的創業思考。
+            當他開始思索如何以「友善環境」為核心投入創業時，
+            咖啡成為一個極具可能性的選項—— 生豆保存相對容易、消費族群廣泛，
+            並且能夠成為連結永續議題與日常生活的媒介。
           </p>
+
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字。
+            在荒野親子團的因緣際會下，他認識了同樣想創業、
+            且具備技術背景的夥伴。 對他而言，這樣的組合讓理念不再只是夢想，
+            而是有機會被落實於現實中的計畫。
+          </p>
+
+          <p>
+            在培樂儂的分工中，James 老師承擔起營運與後勤的角色，
+            包含業務開發、客戶經營、接單出貨與財務控管。 過往在通訊與 3C
+            通路產業的經驗， 讓他格外重視風險管理與一對一的顧客服務。
+            他清楚知道，再好的理念，若無法被大眾選擇，終究難以長久。
+          </p>
+
+          <p>
+            因此，他始終強調「負擔得起，才能產生影響力」。
+            在選豆與定價上，他必須在環境永續、品質要求與消費者負擔能力之間反覆權衡，
+            讓好咖啡不只屬於少數人，而能成為日常生活的一部分。
+            對他而言，咖啡不只是舞台，更是一條讓理念進入生活的通道。
+          </p>
+
+          <p>
+            展望未來，他希望透過吸引理念相近的客戶，
+            並藉由咖啡分享與交流，讓好咖啡與好農業得以被理解、被支持，
+            讓幸福不只存在於當下，而能與未來世代共享。
           </p>
         </section>
-
-        <!-- 你可以繼續加更多 section ... -->
       </div>
 
       <!-- 分隔線 -->
@@ -134,5 +151,4 @@ const article = {
       </div>
     </article>
   </section>
-
 </Layout>

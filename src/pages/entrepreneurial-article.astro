@@ -1,19 +1,21 @@
 ---
-// src/pages/article-example.astro
+// src/pages/motivation-article.astro
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const article = {
-  title: "創業歷程｜從電子零件廠到咖啡坊的足跡 (GPT 生成)",
-  subtitle: "從家族電子零件廠走出來的創業者，帶著職人精神重新打造屬於自己的道路",
-  date: "yyyy-mm-dd",
+  title: "創業歷程｜從電子零件廠到咖啡坊：以職人精神重新定義一杯咖啡",
+  subtitle:
+    "在工業記憶與咖啡香氣之間，兩位創辦人以職人精神回應產業轉型，讓永續理念走進日常生活。",
+  date: "2025-10-01",
   category: "專欄文章",
 };
 ---
 
 <Layout>
-  
-  <section class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20">
+  <section
+    class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20"
+  >
     <!-- 外層卡片容器 -->
     <article
       class="w-[90vw] max-w-4xl bg-[#f7e1c6] rounded-[32px] shadow-[0_40px_80px_rgba(0,0,0,0.25)]
@@ -21,14 +23,20 @@ const article = {
     >
       <!-- 上方標題區 -->
       <header class="space-y-4">
-        <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]">
-          <span class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold">
+        <div
+          class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]"
+        >
+          <span
+            class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold"
+          >
             {article.category}
           </span>
           <span class="opacity-80">{article.date}</span>
         </div>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight">
+        <h1
+          class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight"
+        >
           {article.title}
         </h1>
 
@@ -37,100 +45,117 @@ const article = {
         </p>
       </header>
 
-      <!-- 首圖區 -->
-      <figure class="space-y-4">
-        <div
-          class="overflow-hidden rounded-[28px] shadow-[0_30px_60px_rgba(0,0,0,0.35)]
-                max-h-[480px]"
-        >
-          <!-- 換成你的首圖 -->
-          <img
-            src="/images/your-hero-image.jpg"
-            alt="文章代表圖片"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <figcaption class="text-xs md:text-sm text-[#7b5130] opacity-80">
-          圖說：這裡可以放首圖的簡短說明文字。
-        </figcaption>
-      </figure>
-
-      <!-- 內文：你可以自由增減段落與圖片區塊 -->
-      <div class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg">
+      <!-- 內文 -->
+      <div
+        class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg"
+      >
         <section class="space-y-4">
           <p>
-            清晨的工廠，總是比城市更早醒來。
-            鐵門拉起的聲音、機台啟動的低鳴、燈光在金屬表面反射出的冷色光澤，曾經是他每天最熟悉的風景。
-          </p>
-          <p>
-            在家族經營多年的電子零件廠裡，時間被切割得精準而嚴謹。零點幾毫米的誤差不能被允許，一個流程的疏忽，可能就影響整批產品的品質。長年累積下來的，是一種近乎本能的工作節奏——慢不得，也快不得，只能剛剛好。
-          </p>
-          <p>
-            但也正是在這樣高度規格化的環境中，他開始意識到一件事：自己想要的，或許不只是「把事情做到對」，而是「把一件事情做到有溫度」。
-          </p>
-          <p>
-            離開工廠，並不是一個浪漫的決定。那是一條沒有既定藍圖的路，沒有家族經驗可以依循，也沒有穩定的訂單作為後盾。唯一能帶走的，只有那些在工廠裡練就的能力——對細節的執著、對流程的理解，以及對品質近乎固執的堅持。
-          </p>
-          <p>
-            咖啡，成為他重新安放這些能力的場域。
-          </p>
-        </section>
-
-        <!-- 內文中穿插圖片雙欄區 -->
-        <section class="space-y-4">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/factory.jpg"
-                alt="工廠外觀"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/cafe.jpg"
-                alt="咖啡坊一隅"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <p class="text-sm md:text-base text-[#5c3921] opacity-90">
-            左圖為咖啡坊前身的電子零件工廠，右圖則是空間轉型後的樣貌。
-            透過空間的改造，工業痕跡並沒有被完全抹去，而是成為敘事的一部分。
+            在新莊的一處工業建築內，裸露的管線、沈穩的磨石子地板與刻意保留的舊機具，
+            仍無聲訴說著電子零件廠的輝煌往事。然而，如今空氣中瀰漫的，
+            已不再是冷冽的金屬氣味，而是溫潤且層次分明的咖啡香。 這裡，是
+            BeneFarm 培樂儂 的據點， 也是創辦人詹子儀（含吉）老師與 James
+            老師共同書寫產業轉型與創業精神的實驗場域。
           </p>
         </section>
 
         <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            工業基因：構築創業的堅實底層
+          </h2>
           <p>
-            從挑豆、烘焙、研磨到沖煮，每一個環節都像是一場熟悉卻全新的工藝實驗。水溫、時間、比例，這些看似感性的風味調整，其實同樣需要理性與紀律支撐。不同的是，這一次，成果不再是一箱箱出貨的零件，而是一杯遞到顧客手中的咖啡。
-          </p>
-          <p>
-            咖啡坊的空間裡，沒有機台的轟鳴，取而代之的是磨豆聲與人聲交錯的節奏。有人在這裡短暫停留，有人習慣性地坐在同一個位置，有人只是為了那杯每天固定的味道而來。對他而言，這些片刻的相遇，都是過去工廠生活中難以想像的風景。
-          </p>
-          <p>
-            從電子零件廠到咖啡坊，看似跨度極大，卻並非全然斷裂。那些在工業現場累積的職人精神，沒有被留下，而是被轉譯、被重組，成為另一種形式的專業與堅持。
-          </p>
-          <p>
-            這條創業的路，不只是產業的轉換，更像是一次對自身經驗的重新理解。當精準與耐心不再只為效率服務，而開始為人與生活所用，創業，便不再只是開一家店，而是一種選擇如何生活的方式。
-          </p>
-          <p>
-            而那杯咖啡裡，藏著的，不只是風味，也是一段從工廠走到日常的漫長旅程。
+            在轉身投入咖啡領域前，兩人皆深耕於電子電機或通訊產業。
+            對詹子儀老師而言，工廠不只是生產線，更是世代記憶的延伸。
+            多年來對製造流程、品質精準度與細節的極度敏感，
+            並未隨產業轉換而佚失，反而內化為建構烘焙廠的養分。
+            從設備調教到廠務控管，他將過去跨領域整合的系統化思維，
+            導入咖啡產業，建立起一套穩定且可預期的科學烘焙系統。
           </p>
         </section>
 
-        <!-- 你可以繼續加更多 section ... -->
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            從興趣到使命：當願景在杯中顯影
+          </h2>
+          <p>
+            詹子儀老師對咖啡的熱情始於大學時代的自家烘焙，
+            從同好交流到走訪全球產區， 咖啡早已從愛好昇華為專業。
+            真正的轉捩點，源於他對生命價值的反思：
+            當「環境友善」成為他清晰的志向， 他選擇將工業背景累積的能量，
+            投注在一條能與土地、小農深度連結的道路上。
+          </p>
+          <p>
+            而對 James 老師而言，咖啡則是承載理念的完美媒介。
+            因其易於保存、受眾廣泛， 成為推動永續生活的理想起點。
+            「負擔得起的永續生活，從一杯好咖啡開始」， 不只是培樂儂的口號，
+            更是他們在每一次採購與定價決策中， 反覆實踐的核心準則。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            職人精神的平移：從產線邏輯到風味曲線
+          </h2>
+          <p>
+            在培樂儂，每一支豆子都有其「最理想的位置」。
+            詹子儀老師認為，烘豆師並非風味的創造者， 而是風味的轉譯者——
+            目標是將咖啡豆潛藏的原始風味發揮至極致。 他追求的是從入口到回韻那份
+            「連貫而完整」的感官歷程。
+          </p>
+          <p>
+            這份細膩，源自工業訓練中對參數的執著； 而 James
+            老師則透過嚴謹的杯測監控與逐鍋挑豆，
+            確保品質能維持在高標準的動態平衡。 他們共同的信念是：
+            讓優質咖啡進入日常， 永續的理念就能在每一杯咖啡中悄然擴散。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            空間轉化：承載感恩的在地敘事
+          </h2>
+          <p>
+            走進培樂儂，這裡的工業氛圍並非刻意營造的風格，
+            而是一種對於歷史的選擇性致敬。 舊招牌、零件與專業工具書的保留，
+            讓來訪者在啜飲咖啡之餘， 也能感知這座城市的產業脈動。
+            詹子儀老師認為，這些元素提醒著「來時路」，
+            讓品牌在擴張中始終保有謙卑。
+          </p>
+          <p>
+            James 老師則觀察到， 這種樸實且真誠的空間質感，
+            讓咖啡脫離了高不可攀的精品包裝， 成為扎根於新莊土地上的真實存在。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            向未來延伸：微小力量的匯聚
+          </h2>
+          <p>
+            談及未來，兩人一致聚焦於「深化連結」。
+            無論是計畫走訪產區推動直接貿易， 還是透過市集與課程深耕在地，
+            他們都明白友善環境是一場持久戰。
+            「微小的力量聚集起來，就有機會驅動改變。」
+            這句話，正是培樂儂從電子零件廠跨足咖啡坊的最佳註解——
+            將工業世代淬鍊的職人精神， 轉化為一杯杯指向未來的純粹風味。
+          </p>
+        </section>
       </div>
 
       <!-- 分隔線 -->
       <div class="border-t border-[#d3a97f] pt-8 md:pt-10 mt-4"></div>
 
-      <!-- 返回按鈕區 -->
+      <!-- 返回按鈕 -->
       <div class="flex justify-center">
         <button
           type="button"
@@ -148,5 +173,4 @@ const article = {
       </div>
     </article>
   </section>
-
 </Layout>

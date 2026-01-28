@@ -7,16 +7,18 @@ import coffee3 from "../assets/coffee3.png";
 
 <section id="lifestory" class="lifestory-container">
   <div class="left fade-in" style={`--bean-url: url(${coffee3.src});`}>
-    <p class="text-base md:text-lg tracking-[0.25em] uppercase text-[#5c3b2e]/70 mb-3">
+    <p
+      class="text-base md:text-lg tracking-[0.25em] uppercase text-[#5c3b2e]/70 mb-3"
+    >
       LIFESTORY
     </p>
-    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">生命故事</h2>
+    <h2 class="font-bold mb-4 text-4xl md:text-5xl lg:text-6xl">人物故事</h2>
     <h3 class="font-normal mb-4 text-xl md:text-2xl lg:text-3xl">
       一杯咖啡背後的選擇與堅持
     </h3>
     <p class="font-light mb-4 text-base md:text-lg lg:text-xl">
-      轉型不只是空間改變，更是人生路徑的重新選擇。從產線到吧檯，
-      每一步都累積成今日的風味。（GPT生成）
+      轉型不只是空間改變，更是人生路徑的重新選擇。從電子零件廠到咖啡坊，
+      每一步都累積成今日的風味。
     </p>
 
     <a href={`${import.meta.env.BASE_URL}lifestory-article/`} class="more-info">
@@ -33,172 +35,169 @@ import coffee3 from "../assets/coffee3.png";
 </section>
 
 <style>
-.lifestory-container {
-  background-color: #e8c9a8;
-  width: 100%;
-  height: 100vh; /* Hero 全螢幕 */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 0 6vw;
-}
-
-/* 左半部文字 */
-.left {
-  position: relative;
-  max-width: 60%;
-  padding: 2rem 1rem; /* 讓文字不貼邊 */
-}
-
-/* 背後的咖啡豆 */
-.left::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("src/assets/coffee3.png"); /* 換成你的圖 */
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 420px auto;
-
-  opacity: 0.3; 
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* 確保文字在上層 */
-.left > * {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* 右側容器 */
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 新的左右排列容器 */
-.photo-row {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 32px;
-}
-
-/* 共同樣式 + 漂浮動畫 */
-.photo {
-  width: 400px;
-  height: 80vh;
-  object-fit: cover;
-  border-radius: 22px;
-  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.15);
-
-  /* 基準位移（之後由 .photo-left / .photo-right 設定） */
-  --offset-y: 0px;
-  transform: translateY(var(--offset-y));
-
-  /* 漂浮動畫 */
-  animation: float 3s ease-in-out infinite alternate;
-}
-
-/* 左邊那張：基準往下 20px，再上下小幅漂浮 */
-.photo-left {
-  --offset-y: 35px;
-}
-
-/* 右邊那張：基準往上 20px，再上下小幅漂浮 */
-.photo-right {
-  --offset-y: -35px;
-}
-
-/* 漂浮動畫：以 offset 為中心，上下輕微晃動 */
-@keyframes float {
-  0% {
-    transform: translateY(var(--offset-y));
-  }
-  100% {
-    transform: translateY(calc(var(--offset-y) - 12px));
-  }
-}
-
-
-/* 手機版改成上下排列 */
-@media (max-width: 768px) {
-  .photo-row {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .photo {
+  .lifestory-container {
+    background-color: #e8c9a8;
     width: 100%;
-    height: 300px;
-    border-radius: 18px;
-    transform: none !important; /* 手機版不要錯位 */
-  }
-}
-
-
-/* 按鈕樣式維持原本設定 */
-.more-info {
-  display: inline-block;
-  background-color: #6a4b32;
-  color: white;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease,
-    box-shadow 0.3s ease;
-}
-
-.more-info:hover {
-  background-color: #8b6346;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* RWD：小螢幕改成上下排，照片不要重疊避免太擠 */
-@media (max-width: 768px) {
-  .motivation-container {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    height: auto;
-    padding: 48px 6vw 64px;
-    row-gap: 32px;
+    height: 100vh; /* Hero 全螢幕 */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 6vw;
   }
 
+  /* 左半部文字 */
   .left {
-    max-width: 100%;
-  }
-
-  .photo-stack {
-    max-width: 420px;
-    aspect-ratio: 3 / 4;
-  }
-
-  .photo {
     position: relative;
-    width: 100%;
-    height: 48%;
-    border-radius: 200px 200px 100px 100px;
+    max-width: 60%;
+    padding: 2rem 1rem; /* 讓文字不貼邊 */
   }
 
+  /* 背後的咖啡豆 */
+  .left::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("src/assets/coffee3.png"); /* 換成你的圖 */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 420px auto;
+
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* 確保文字在上層 */
+  .left > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 右側容器 */
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 新的左右排列容器 */
+  .photo-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  /* 共同樣式 + 漂浮動畫 */
+  .photo {
+    width: 400px;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.15);
+
+    /* 基準位移（之後由 .photo-left / .photo-right 設定） */
+    --offset-y: 0px;
+    transform: translateY(var(--offset-y));
+
+    /* 漂浮動畫 */
+    animation: float 3s ease-in-out infinite alternate;
+  }
+
+  /* 左邊那張：基準往下 20px，再上下小幅漂浮 */
   .photo-left {
-    top: 0;
-    left: 0;
-    margin-bottom: 16px;
+    --offset-y: 35px;
   }
 
+  /* 右邊那張：基準往上 20px，再上下小幅漂浮 */
   .photo-right {
-    top: 0;
-    right: 0;
-    height: 48%;
+    --offset-y: -35px;
   }
-}
+
+  /* 漂浮動畫：以 offset 為中心，上下輕微晃動 */
+  @keyframes float {
+    0% {
+      transform: translateY(var(--offset-y));
+    }
+    100% {
+      transform: translateY(calc(var(--offset-y) - 12px));
+    }
+  }
+
+  /* 手機版改成上下排列 */
+  @media (max-width: 768px) {
+    .photo-row {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .photo {
+      width: 100%;
+      height: 300px;
+      border-radius: 18px;
+      transform: none !important; /* 手機版不要錯位 */
+    }
+  }
+
+  /* 按鈕樣式維持原本設定 */
+  .more-info {
+    display: inline-block;
+    background-color: #6a4b32;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .more-info:hover {
+    background-color: #8b6346;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  /* RWD：小螢幕改成上下排，照片不要重疊避免太擠 */
+  @media (max-width: 768px) {
+    .motivation-container {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      height: auto;
+      padding: 48px 6vw 64px;
+      row-gap: 32px;
+    }
+
+    .left {
+      max-width: 100%;
+    }
+
+    .photo-stack {
+      max-width: 420px;
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo {
+      position: relative;
+      width: 100%;
+      height: 48%;
+      border-radius: 200px 200px 100px 100px;
+    }
+
+    .photo-left {
+      top: 0;
+      left: 0;
+      margin-bottom: 16px;
+    }
+
+    .photo-right {
+      top: 0;
+      right: 0;
+      height: 48%;
+    }
+  }
 </style>

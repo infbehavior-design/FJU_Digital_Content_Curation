@@ -5,30 +5,37 @@ import "../styles/global.css";
 
 const article = {
   title: "地方創生永續發展 | 選豆策略、有機認證及友善環境",
-  subtitle: "「經營土地，就是與大自然分享土地。」在開墾時保留原生樹種，回補從土地拿走的養分，考量生態平衡，才能讓咖啡有永續發展的機會。",
-  date: "yyyy-mm-dd",
+  subtitle:
+    "「經營土地，就是與大自然分享土地。」在開墾時保留原生樹種，回補從土地拿走的養分，考量生態平衡，才能讓咖啡有永續發展的機會。",
+  date: "2025-10-01",
   category: "專欄文章",
 };
 ---
 
 <Layout>
-  
-  <section class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20">
-    <!-- 外層卡片容器 -->
+  <section
+    class="min-h-screen w-full bg-[#e8c9a8] flex justify-center py-12 md:py-16 lg:py-20"
+  >
     <article
       class="w-[90vw] max-w-4xl bg-[#f7e1c6] rounded-[32px] shadow-[0_40px_80px_rgba(0,0,0,0.25)]
             px-6 md:px-10 lg:px-14 py-10 md:py-12 space-y-8 md:space-y-10"
     >
       <!-- 上方標題區 -->
       <header class="space-y-4">
-        <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]">
-          <span class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold">
+        <div
+          class="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#7b5130]"
+        >
+          <span
+            class="inline-flex items-center rounded-full bg-[#e1b98f]/70 px-3 py-1 font-semibold"
+          >
             {article.category}
           </span>
           <span class="opacity-80">{article.date}</span>
         </div>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight">
+        <h1
+          class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3a2213] leading-tight"
+        >
           {article.title}
         </h1>
 
@@ -37,86 +44,100 @@ const article = {
         </p>
       </header>
 
-      <!-- 首圖區 -->
-      <figure class="space-y-4">
-        <div
-          class="overflow-hidden rounded-[28px] shadow-[0_30px_60px_rgba(0,0,0,0.35)]
-                max-h-[480px]"
-        >
-          <!-- 換成你的首圖 -->
-          <img
-            src="/images/your-hero-image.jpg"
-            alt="文章代表圖片"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <figcaption class="text-xs md:text-sm text-[#7b5130] opacity-80">
-          圖說：這裡可以放首圖的簡短說明文字。
-        </figcaption>
-      </figure>
-
-      <!-- 內文：你可以自由增減段落與圖片區塊 -->
-      <div class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg">
+      <!-- 內文 -->
+      <div
+        class="space-y-8 md:space-y-10 text-[#3a2213] leading-relaxed text-base md:text-lg"
+      >
         <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            一、章節一
+          <p>
+            長期以來，新莊在北台灣的城市地圖上，總被貼上「工業重鎮」的標籤。
+            從藏身在南新莊的密集工業城，到新北產業園區的精密製造，
+            讓這座城市的節奏由沖床聲、機械運轉聲與藍領汗水交織而成。
+            然而，隨著都市計畫更迭與二代接班的思維轉變，
+            新莊正在經歷一場從「工廠」到「生活場域」的華麗轉身。
+          </p>
+
+          <p>
+            在這股轉型浪潮中，位於新莊工業區老建築裡的 BeneFarm 培樂儂，
+            不只是一間烘焙咖啡坊，更是一個示範了產業轉型的絕佳案例。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            從生產線到品味線：工業背景的職人平移
           </h2>
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字。
+            新莊的轉型，並非全然抹除過去，
+            而是將工業時代的「職人精神」平移至現代生活產業。
+            培樂儂的創辦人詹子儀（含吉）與 James 兩位老師，
+            正代表了這種轉型的典型。
           </p>
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字示範文字示範文字。
-          </p>
-        </section>
-
-        <!-- 內文中穿插圖片雙欄區 -->
-        <section class="space-y-4">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/factory.jpg"
-                alt="工廠外觀"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class="overflow-hidden rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                    bg-[#d6b18d]"
-            >
-              <img
-                src="/images/cafe.jpg"
-                alt="咖啡坊一隅"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <p class="text-sm md:text-base text-[#5c3921] opacity-90">
-            示範文字示範文字示範文字示範文字示範文字示範文字示範文字。
+            詹子儀老師出身於電子電機背景， 在培樂儂，每一道烘焙時間的精準掌握，
+            也許就是在工業邏輯下的優雅展現。 而 James
+            老師則帶入通訊產業的市場觀點， 讓「永續理念」不再是空中樓閣，
+            而是透過商業模型， 成為在地居民能負擔、也願意嘗試的日常飲品。
           </p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            二、章節二
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            空間轉身：老工廠成為咖啡坊
           </h2>
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字。
+            過去，新莊的工業建築往往帶有距離感， 是工作結束後便想離開的地方。
+            但培樂儂在空間規劃上， 刻意保留了電子零件廠的痕跡：
+            裸露的管線、顯眼的標語、老機具與磨石子地板。
+            這些元素並非單純的「工業風妝點」， 而是一種對在地記憶的留存。
           </p>
           <p>
-            示範文字示範文字示範文字示範文字示範文字示範文字。
+            這種空間的「開放性」， 打破了過去廠區與社區的隔閡。 當居民走進這裡，
+            他們看見的是新莊的過去， 品味到的卻是這座城市的未來。
+            咖啡坊不再只是買賣商品的地方， 它更像是一個「社群客廳」。
           </p>
         </section>
 
-        <!-- 你可以繼續加更多 section ... -->
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            咖啡作為媒介：串連地方創生的新動能
+          </h2>
+          <p>
+            培樂儂深耕新莊的足跡， 展現了咖啡坊如何成為地方轉型的觸媒。
+            透過參與在地創意市集， 咖啡成為居民之間對話的起點；
+            透過友善選豆與直接貿易， 環境價值與產地連結被帶入日常生活。
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-[#7b5130] tracking-wide"
+          >
+            新莊的生活樣貌更新
+          </h2>
+          <p>
+            當我們說「新莊不只是一個工業地區」時， 我們指的不僅是建築的翻新，
+            更是生活樣貌的更新。
+          </p>
+          <p>
+            培樂儂的存在證明了： 產業轉型不代表要拋棄歷史。
+            相反地，當工業時代累積的堅毅、精準與務實，
+            被咖啡坊這種溫潤的生活載體所承載時， 它能產生巨大的轉化力量。
+            每一杯流動在舊工廠裡的咖啡， 都是新莊這場文化轉身中最動人的註解。
+          </p>
+        </section>
       </div>
 
       <!-- 分隔線 -->
       <div class="border-t border-[#d3a97f] pt-8 md:pt-10 mt-4"></div>
 
-      <!-- 返回按鈕區 -->
+      <!-- 返回 -->
       <div class="flex justify-center">
         <button
           type="button"
@@ -134,5 +155,4 @@ const article = {
       </div>
     </article>
   </section>
-
 </Layout>
